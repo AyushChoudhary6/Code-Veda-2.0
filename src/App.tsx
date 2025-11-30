@@ -5,10 +5,11 @@ import Shuffle from "./components/Title";
 
 function App() {
   return (
-  <div className="min-h-screen bg-black text-white overflow-x-hidden" style={{
+  <div className="min-h-screen text-white bg-[linear-gradient(135deg,#140724_0%,#0f0622_50%,#1a0b2e_100%)] overflow-x-hidden">
+  {/* <div className="min-h-screen bg-black text-white overflow-x-hidden" style={{
       backgroundImage: `radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
                         radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.15) 0%, transparent 50%)`,
-    }} >
+    }} > */}
 
     <div>
       <Navbar/>
