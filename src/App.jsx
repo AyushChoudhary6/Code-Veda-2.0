@@ -9,6 +9,7 @@ import WhyCodeVeda from './pages/whycodeveda'
 import SchedulePage from './pages/SchedulePage'
 import SponsorPage from './pages/sponsor'
 import TeamPage from './pages/TeamPage'
+import ProblemStatements from './pages/ProblemStatements'
 
 const HomePage = () => (
   <div className="app-container bg-cosmic-900 text-divine-silver">
@@ -29,6 +30,7 @@ function App() {
         <Route path="/schedule" element={<SchedulePage />} />
         <Route path="/sponsors" element={<SponsorPage />} />
         <Route path="/team" element={<TeamPage />} />
+        <Route path="/problem-statements" element={<ProblemStatements />} />
       </Routes>
     </Router>
   )
