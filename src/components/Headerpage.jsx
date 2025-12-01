@@ -107,222 +107,136 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 bg-[#0a0616]">
-      {/* HEADER */}
-      <header className="fixed top-0 left-0 w-full bg-[#0a0616]/80 z-50 px-6 py-4 flex flex-col sm:flex-row justify-between items-center">
-        <h1 className="text-3xl sm:text-4xl font-bold text-white mb-2 sm:mb-0">
-          CODE VEDA
-        </h1>
-        <ul className="flex flex-wrap sm:flex-nowrap gap-3 sm:gap-6 text-white text-sm sm:text-base justify-center sm:justify-end">
-          <li className="px-3 py-1 hover:text-blue-400 transition">Home</li>
-          <li className="px-3 py-1 hover:text-blue-400 transition">
-            Why Code Veda
-          </li>
-          <li className="px-3 py-1 hover:text-blue-400 transition">
-            Problem Statement
-          </li>
-          <li className="px-3 py-1 hover:text-blue-400 transition">Schedule</li>
-          <li className="px-3 py-1 hover:text-blue-400 transition">Prizes</li>
-          <li className="px-3 py-1 hover:text-blue-400 transition">Sponsors</li>
-          <li className="px-3 py-1 hover:text-blue-400 transition">Teams</li>
-          <li className="px-3 py-1 hover:text-blue-400 transition">
-            Duality AI
-          </li>
-          <li className="px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-blue-600 transition">
-            Register
-          </li>
-        </ul>
-      </header>
-
+    <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 bg-transparent">
       {/* TEAM SECTION */}
-      <div className="max-w-6xl mx-auto mt-40 bg-[#0a0616]">
-        <div
-          className="text-left pl-10 h-[100px] flex flex-col justify-center 
-opacity-0 translate-y-10 transition-all duration-700 scroll-fade-right"
-        >
+      <div className="max-w-7xl mx-auto mt-10 lg:mt-20 flex flex-col lg:flex-row items-center justify-between gap-12">
+        
+        {/* Left Content */}
+        <div className="lg:w-1/2 text-left z-10 opacity-0 translate-y-10 transition-all duration-700 scroll-fade-right">
           <h2
-            className="text-9xl font-bold text-white mb-8 -ml-[15rem]
-    opacity-0 translate-y-10 transition-all duration-700 scroll-fade-right"
+            className="text-6xl md:text-8xl font-bold text-white mb-6 leading-tight"
             style={{ fontFamily: "'Samarkan', sans-serif" }}
           >
             Our Team
           </h2>
 
-          <p
-            className="text-4xl text-gray-300 -ml-[15rem] mb-15 
-  opacity-0 translate-y-10 transition-all duration-700 scroll-fade-right"
-          >
-            🔱 Code Veda Hackathon - The Council of Leads
+          <div className="h-1 w-32 bg-gradient-to-r from-yellow-400 to-orange-500 mb-8"></div>
+
+          <p className="text-2xl md:text-3xl text-gray-300 mb-4 font-light">
+            🔱 Code Veda Hackathon <br/>
+            <span className="text-yellow-400 font-semibold">The Council of Leads</span>
           </p>
 
-          <p
-            className="text-4xl text-gray-300 mb-7 -ml-[15rem] 
-  opacity-0 translate-y-10 transition-all duration-700 scroll-fade-right"
-          >
-            🔱 Infusing ancient wisdom with modern innovation
+          <p className="text-xl text-gray-400 italic">
+            "Infusing ancient wisdom with modern innovation"
           </p>
         </div>
 
-        <div className="relative flex justify-end items-center w-full h-96 mt-10  opacity-0 translate-y-10 transition-all duration-700 delay-200 scroll-fade-right ">
-          {/* Guru Image */}
-          <div className="relative group float-animation ">
+        {/* Right Content - Guru Image */}
+        <div className="lg:w-1/2 relative flex justify-center lg:justify-end mt-12 lg:mt-0 opacity-0 translate-y-10 transition-all duration-700 delay-200 scroll-fade-right">
+          <div className="relative group float-animation">
+            {/* Glow Effect */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-yellow-500/20 rounded-full blur-3xl pointer-events-none"></div>
+            
             <img
               src={img8}
               alt="Guru"
-              className="w-[500px] h-auto rounded-xl cursor-pointer shadow-lg"
-              style={{
-                zIndex: 10,
-                width: "500px",
-                height: "auto",
-                top: "-190px",
-                left: "350px",
-                position: "relative",
-                transition: "transform 0.3s",
-              }}
+              className="relative z-10 w-full max-w-md h-auto rounded-xl shadow-2xl transform transition-transform duration-500 hover:scale-105"
             />
 
             {/* Thought Bubble */}
-            <div
-              className="absolute -top-32 -right-48 p-6 w-80 bg-white rounded-3xl shadow-xl 
-             cursor-pointer transition-transform duration-300 
-             transform group-hover:scale-105 float-animation"
-              style={{
-                zIndex: 20,
-                width: "400px",
-                height: "auto",
-                top: "-160px",
-                right: " -30px",
-              }}
-            >
-              <p className="text-lg font-semibold text-black">
-                "Code Veda bridges ancient wisdom with modern technology..."
-              </p>
-
-              {/* Triangle */}
-              <div
-                style={{
-                  position: "absolute",
-                  bottom: "-18px",
-                  left: "90%",
-                  width: "20px",
-                  height: "20px",
-                  backgroundColor: "white",
-                  clipPath: "polygon(0 0, 100% 0, 0 100%)",
-                  transform: "rotate(90deg)",
-                }}
-              />
+            <div className="absolute -top-20 -left-10 md:-left-20 z-20 animate-bounce-slow">
+               <div className="bg-white text-black p-6 rounded-2xl rounded-br-none shadow-xl max-w-xs relative transform -rotate-2 hover:rotate-0 transition-transform duration-300">
+                <p className="text-lg font-semibold leading-snug">
+                  "Code Veda bridges ancient wisdom with modern technology..."
+                </p>
+                {/* Bubble Tail */}
+                <div className="absolute -bottom-4 right-0 w-8 h-8 bg-white clip-path-polygon"></div>
+                <svg className="absolute -bottom-4 right-0 w-6 h-6 text-white fill-current transform rotate-90" viewBox="0 0 24 24">
+                   <path d="M24 0l-24 24h24v-24z"/>
+                </svg>
+              </div>
             </div>
-
-            {/* Soft Glow Behind Monk (Z-index FIXED) */}
-            {/* Optional Glow Behind Guru */}
-            <div
-              className="absolute -top-10 -left-10 w-[550px] h-[550px] rounded-full pointer-events-none"
-              style={{
-                background:
-                  "radial-gradient(circle, rgba(255,210,80,0.35) 0%, rgba(255,170,0,0.15) 40%, rgba(255,150,0,0) 70%)",
-                filter: "blur(120px)",
-                zIndex: 5,
-                top: "-170px",
-                left: "300px",
-              }}
-            />
           </div>
         </div>
       </div>
 
       {/* Team Carousel */}
-      <div
-        className="min-h-screen flex flex-col items-center justify-center bg-[#0a0616] text-white p-6 mt-20 
-     transition-all duration-700 opacity-0 translate-x-20 scroll-fade-right"
-      >
-        <div className="relative w-full max-w-5xl-[1600px] flex items-center justify-between">
-          <div
-            className="flex rounded-xl shadow-lg overflow-hidden cursor-grab select-none neon-card"
-            style={{
-              minHeight: "600px",
-              width: "1200px",
-              maxWidth: "95%",
-              margin: "0 auto",
-              backgroundColor: "#0f0424",
-              boxShadow:
-                "0 4px 8px rgba(0, 0, 0, 0.2), 0 0 20px rgba(58, 46, 91, 0.7)", // Shadow + glow (red glow)
-              transition: "transform 0.3s ease", // Smooth transition for pop effect
-              objectFit: "cover",
-              // Add hover logic: e.g., transform: isHovered ? 'scale(1.05)' : 'scale(1)' (using state as in Example 2)
-            }}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.transform = "scale(1.1)")
-            }
-            onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
-          >
+      <div className="w-full max-w-6xl mx-auto mt-32 mb-20 opacity-0 translate-y-10 transition-all duration-700 delay-300 scroll-fade-right">
+        <div className="relative bg-[#0f0424]/80 backdrop-blur-md border border-white/10 rounded-3xl shadow-2xl overflow-hidden">
+          
+          <div className="flex flex-col md:flex-row min-h-[500px]">
             {/* Left: Image */}
-
-            <div className="w-1/2 flex items-center justify-center relative rounded-full overflow-hidden">
-              <img
-                src={teamMembers[activeIndex].image}
-                alt={teamMembers[activeIndex].name}
-                style={{
-                  width: "300px",
-                  height: "300px",
-                  borderRadius: "50%",
-                  objectFit: "cover",
-                  transition: "transform 0.3s",
-                }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.transform = "scale(1.1)")
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.transform = "scale(1)")
-                }
-              />
+            <div className="md:w-2/5 p-8 flex items-center justify-center bg-gradient-to-br from-purple-900/20 to-blue-900/20">
+              <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-yellow-500/30 shadow-[0_0_30px_rgba(234,179,8,0.2)] group">
+                <img
+                  src={teamMembers[activeIndex].image}
+                  alt={teamMembers[activeIndex].name}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+              </div>
             </div>
 
             {/* Right: Text */}
-            <div className="w-1/2  p-1 flex flex-col justify-center gap-4">
-              <h2 className="text-4xl font-bold">
-                {teamMembers[activeIndex].name}
-              </h2>
-              <p className="text-2xl text-blue-400 font-semibold">
-                {teamMembers[activeIndex].role}
-              </p>
-              <p className="text-gray-700">{teamMembers[activeIndex].bio}</p>
+            <div className="md:w-3/5 p-8 md:p-12 flex flex-col justify-center relative">
+              <div className="space-y-6">
+                <div>
+                  <h2 className="text-4xl md:text-5xl font-bold text-white mb-2">
+                    {teamMembers[activeIndex].name}
+                  </h2>
+                  <p className="text-xl md:text-2xl text-yellow-400 font-medium">
+                    {teamMembers[activeIndex].role}
+                  </p>
+                </div>
 
-              {/* Extra info */}
-              {teamMembers[activeIndex].experience && (
-                <p className="text-gray-600 font-medium">
-                  Experience: {teamMembers[activeIndex].experience}
+                <p className="text-lg text-gray-300 leading-relaxed">
+                  {teamMembers[activeIndex].bio}
                 </p>
-              )}
-              {teamMembers[activeIndex].skills && (
-                <p className="text-gray-600 font-medium">
-                  Skills: {teamMembers[activeIndex].skills}
-                </p>
-              )}
 
-              <a
-                href={teamMembers[activeIndex].linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-blue-500 hover:text-blue-400 transition-all duration-300 transform hover:scale-110"
-              >
-                <FaLinkedin size={24} />
-                <span className="font-semibold">LinkedIn</span>
-              </a>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-white/10">
+                  {teamMembers[activeIndex].experience && (
+                    <div>
+                      <span className="text-gray-500 text-sm uppercase tracking-wider">Experience</span>
+                      <p className="text-white font-medium">{teamMembers[activeIndex].experience}</p>
+                    </div>
+                  )}
+                  {teamMembers[activeIndex].skills && (
+                    <div>
+                      <span className="text-gray-500 text-sm uppercase tracking-wider">Skills</span>
+                      <p className="text-white font-medium">{teamMembers[activeIndex].skills}</p>
+                    </div>
+                  )}
+                </div>
+
+                <div className="pt-4">
+                  <a
+                    href={teamMembers[activeIndex].linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-blue-600/30"
+                  >
+                    <FaLinkedin size={20} />
+                    <span className="font-semibold">Connect on LinkedIn</span>
+                  </a>
+                </div>
+              </div>
+
+              {/* Navigation Buttons */}
+              <div className="absolute bottom-8 right-8 flex gap-4">
+                <button
+                  onClick={prevSlide}
+                  className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-white/10"
+                >
+                  &#8592;
+                </button>
+                <button
+                  onClick={nextSlide}
+                  className="w-12 h-12 rounded-full bg-yellow-500 hover:bg-yellow-400 flex items-center justify-center text-black transition-all duration-300 hover:scale-110 shadow-lg hover:shadow-yellow-500/50"
+                >
+                  &#8594;
+                </button>
+              </div>
             </div>
-
-            <button
-              onClick={nextSlide}
-              className="absolute ml-6 top-75 -translate-y-1/2 text-5xl text-gray-400 hover:text-white"
-            >
-              &#8592;
-            </button>
-
-            <button
-              onClick={nextSlide}
-              className="absolute right-6 top-1/2 transform -translate-y-1/2 text-5xl text-gray-400 hover:text-white "
-            >
-              &#8594;
-            </button>
           </div>
         </div>
       </div>
