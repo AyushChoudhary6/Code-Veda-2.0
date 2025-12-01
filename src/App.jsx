@@ -10,7 +10,6 @@ import SchedulePage from './pages/SchedulePage'
 import SponsorPage from './pages/sponsor'
 import TeamPage from './pages/TeamPage'
 import ProblemStatements from './pages/ProblemStatements'
-import PrizePage from './pages/PrizePage'
 
 const HomePage = () => (
   <div className="app-container bg-cosmic-900 text-divine-silver">
@@ -32,7 +31,6 @@ function App() {
         <Route path="/sponsors" element={<SponsorPage />} />
         <Route path="/team" element={<TeamPage />} />
         <Route path="/problem-statements" element={<ProblemStatements />} />
-        <Route path="/prizes" element={<PrizePage />} />
       </Routes>
     </Router>
   )
