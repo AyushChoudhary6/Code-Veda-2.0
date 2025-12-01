@@ -18,6 +18,10 @@ const Navbar = () => {
       navigate('/team')
     } else if (id === 'problem-statements') {
       navigate('/problem-statements')
+    } else if (id === 'prizes') {
+      navigate('/prizes')
+    } else if (id === 'home') {
+      navigate('/')
     } else {
       // If we are on a different page and try to scroll to a home section, go home first
       navigate('/')
