@@ -11,7 +11,7 @@ const PrizePage = () => {
         {/* Hero Section */}
         <div className="text-center mb-40 space-y-6">
           <div className="inline-block px-4 py-1.5 rounded-full bg-yellow-900/30 border border-yellow-500/30 text-yellow-200 text-sm font-semibold tracking-wide uppercase mb-4 animate-pulse">
-            Total Prize Pool: ₹100,000+
+            Total Prize Pool: TBA
           </div>
           <h1 className="text-5xl md:text-8xl font-black tracking-tight mb-4 bg-gradient-to-r from-yellow-400 via-yellow-200 to-yellow-400 bg-clip-text text-transparent">
             Hackathon Prizes
@@ -35,12 +35,12 @@ const PrizePage = () => {
               </div>
               <div className="mt-16 space-y-2">
                 <h2 className="text-2xl font-bold text-gray-300">2nd Place</h2>
-                <div className="text-4xl font-black text-gray-100">₹20,000</div>
-                <p className="text-sm text-gray-400 font-medium">+ Swag Kit</p>
+                <div className="text-4xl font-black text-gray-100">TBA</div>
+                {/* <p className="text-sm text-gray-400 font-medium">+ Swag Kit</p> */}
                 <ul className="mt-6 space-y-2 text-left text-sm text-gray-300 bg-white/5 p-4 rounded-xl border border-white/10">
-                  <li className="flex items-center gap-2">✓ Silver Medal</li>
-                  <li className="flex items-center gap-2">✓ Premium Subscriptions</li>
-                  <li className="flex items-center gap-2">✓ Internship Opportunity</li>
+                  <li className="flex items-center gap-2">✓ Other Exciting Stuff</li>
+                  {/* <li className="flex items-center gap-2">✓ Premium Subscriptions</li> */}
+                  {/* <li className="flex items-center gap-2">✓ Internship Opportunity</li> */}
                 </ul>
               </div>
             </div>
@@ -58,17 +58,17 @@ const PrizePage = () => {
               </div>
               <div className="mt-24 space-y-3">
                 <h2 className="text-3xl font-bold text-yellow-400">1st Place</h2>
-                <div className="text-6xl font-black text-yellow-300">₹50,000</div>
-                <p className="text-base text-yellow-200/80 font-medium">+ Ultimate Swag Kit</p>
+                <div className="text-6xl font-black text-yellow-300">TBA</div>
+                {/* <p className="text-base text-yellow-200/80 font-medium">+ Ultimate Swag Kit</p> */}
                 <ul className="mt-8 space-y-3 text-left text-sm text-yellow-100/80 bg-yellow-500/10 p-6 rounded-xl border border-yellow-500/20">
                   <li className="flex items-center gap-2">
-                    <span className="text-yellow-400">★</span> Gold Medal
+                    <span className="text-yellow-400">★</span> Other Exciting Stuff
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="text-yellow-400">★</span> Job Interview
+                    {/* <span className="text-yellow-400">★</span> Job Interview */}
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="text-yellow-400">★</span> Tech Gadgets Bundle
+                    {/* <span className="text-yellow-400">★</span> Tech Gadgets Bundle */}
                   </li>
                 </ul>
               </div>
@@ -87,12 +87,12 @@ const PrizePage = () => {
               </div>
               <div className="mt-16 space-y-2">
                 <h2 className="text-2xl font-bold text-orange-400">3rd Place</h2>
-                <div className="text-4xl font-black text-orange-200">₹10,000</div>
-                <p className="text-sm text-orange-300 font-medium">+ Swag Kit</p>
+                <div className="text-4xl font-black text-orange-200">TBA</div>
+                {/* <p className="text-sm text-orange-300 font-medium">+ Swag Kit</p> */}
                 <ul className="mt-6 space-y-2 text-left text-sm text-orange-100/70 bg-orange-500/10 p-4 rounded-xl border border-orange-500/20">
-                  <li className="flex items-center gap-2">✓ Bronze Medal</li>
-                  <li className="flex items-center gap-2">✓ Cloud Credits</li>
-                  <li className="flex items-center gap-2">✓ Mentorship Session</li>
+                  <li className="flex items-center gap-2">✓ Other Exciting Stuff</li>
+                  {/* <li className="flex items-center gap-2">✓ Cloud Credits</li> */}
+                  {/* <li className="flex items-center gap-2">✓ Mentorship Session</li> */}
                 </ul>
               </div>
             </div>
@@ -100,7 +100,7 @@ const PrizePage = () => {
         </div>
 
         {/* Additional Prizes Section */}
-        <div className="mt-20 text-center">
+        {/* <div className="mt-20 text-center">
           <h2 className="text-4xl font-bold mb-12 bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">
             Special Category Prizes
           </h2>
@@ -121,7 +121,7 @@ const PrizePage = () => {
               <p className="text-sm text-gray-400">For best use of technology</p>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
 
       <Footer />
