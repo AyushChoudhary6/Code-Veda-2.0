@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { FaWifi, FaLeaf, FaGlobe, FaHeartbeat, FaCode, FaVrCardboard, FaCube } from 'react-icons/fa';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import CosmicBackground from '../components/CosmicBackground';
 
 const tracks = [
   {
@@ -139,10 +138,9 @@ const ProblemStatements = () => {
 
   return (
     <div className="min-h-screen bg-cosmic-900 text-white font-sans overflow-x-hidden">
-      <CosmicBackground />
       <Navbar />
 
-      <div className="relative z-10 pt-20 pb-12 px-4 max-w-5xl mx-auto">
+      <div className="relative z-10 pt-28 pb-12 px-4 max-w-5xl mx-auto">
         {/* Header */}
         <header className="text-center mb-6">
           <motion.h1
