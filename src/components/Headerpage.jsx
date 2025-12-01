@@ -99,7 +99,7 @@ const teamMembers = [
     image: img4,
   },
   {
-    name: "Mehak",
+    name: "Mahak",
     role: "Event Coordinator",
     linkedin: "https://www.linkedin.com/in/mahak-68840b329?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     image: img5,

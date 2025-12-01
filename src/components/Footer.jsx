@@ -48,6 +48,7 @@ const Footer = () => {
             <FooterLink onClick={() => handleNavigation('/problem-statements')}>Problem Statements</FooterLink>
             <FooterLink onClick={() => handleNavigation('/schedule')}>Schedule</FooterLink>
             <FooterLink onClick={() => handleNavigation('/prizes')}>Prizes</FooterLink>
+            <FooterLink onClick={() => handleNavigation('/gallery')}>Gallery</FooterLink>
             <FooterLink onClick={() => handleNavigation('/sponsors')}>Sponsors</FooterLink>
             <FooterLink onClick={() => handleNavigation('/team')}>Team</FooterLink>
           </LinkColumn>

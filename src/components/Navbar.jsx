@@ -21,6 +21,8 @@ const Navbar = () => {
       navigate('/problem-statements')
     } else if (id === 'prizes') {
       navigate('/prizes')
+    } else if (id === 'gallery') {
+      navigate('/gallery')
     } else if (id === 'home') {
       navigate('/')
     } else {
@@ -76,6 +78,9 @@ const Navbar = () => {
         </button>
         <button className="nav-link-btn" onClick={() => handleScroll('prizes')}>
           Prizes
+        </button>
+        <button className="nav-link-btn" onClick={() => handleScroll('gallery')}>
+          Gallery
         </button>
         <button className="nav-link-btn" onClick={() => handleScroll('sponsors')}>
           Sponsors
