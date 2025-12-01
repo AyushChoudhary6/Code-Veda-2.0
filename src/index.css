@@ -1761,3 +1761,16 @@ body,
   text-transform: uppercase;
   opacity: 0.8;
 }
+
+@keyframes scrollLR {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-lr {
+  animation: scrollLR 60s linear infinite;
+}
