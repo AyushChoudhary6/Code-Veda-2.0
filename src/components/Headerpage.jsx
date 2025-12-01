@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FaLinkedin } from "react-icons/fa";
-import meditationImg from "/meditation.png";
+import meditationImg from "/meditation2.png";
 import img1 from "../assets/team/animesh.jpg";
 import img2 from "../assets/team/mohit.jpg";
 import img3 from "../assets/team/yash.jpg";
@@ -148,23 +148,14 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Right Side - Guru Image with Speech Bubble */}
+        {/* Right Side - Chakra Image */}
         <div className="flex-1 relative flex justify-center md:justify-end items-center z-10">
           <div className="relative">
-            {/* Speech Bubble - Hidden on mobile */}
-            <div className="hidden md:block absolute -top-20 -left-80 bg-white text-black rounded-3xl p-6 shadow-2xl max-w-sm">
-              <p className="text-lg font-semibold">
-                "Code Veda bridges ancient wisdom with modern technology..."
-              </p>
-              {/* Bubble tail */}
-              <div className="absolute bottom-0 right-8 w-0 h-0 border-l-[20px] border-l-transparent border-r-[20px] border-r-transparent border-t-[20px] border-t-white transform translate-y-full"></div>
-            </div>
-            
-            {/* Guru/Monk Image */}
+            {/* Chakra Meditation Image */}
             <img
               src={meditationImg}
-              alt="Guru"
-              className="w-[280px] md:w-[400px] lg:w-[500px] h-auto rounded-2xl shadow-2xl relative z-20"
+              alt="Chakra Meditation"
+              className="w-[280px] md:w-[400px] lg:w-[500px] h-auto relative z-20"
             />
             
             {/* Glow Effect */}
