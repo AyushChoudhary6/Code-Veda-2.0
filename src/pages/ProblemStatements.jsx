@@ -142,7 +142,7 @@ const ProblemStatements = () => {
       <CosmicBackground />
       <Navbar />
 
-      <div className="relative z-10 pt-24 pb-12 px-4 max-w-5xl mx-auto">
+      <div className="relative z-10 pt-2 pb-12 px-4 max-w-5xl mx-auto">
         {/* Header */}
         <header className="text-center mb-6">
           <motion.h1
