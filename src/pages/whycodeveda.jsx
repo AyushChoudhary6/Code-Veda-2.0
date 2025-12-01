@@ -1,9 +1,9 @@
-import React, { useState, useMemo, useEffect, useRef } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiSearch, FiVolume2, FiVolumeX } from "react-icons/fi";
+import { FiSearch } from "react-icons/fi";
 import { HiSparkles } from "react-icons/hi";
 
-// ============= Code by Manav =============
+// ============= Code by Manav  =============
 const styles = `
   @keyframes float {
     0%, 100% { transform: translateY(0px); }
@@ -83,6 +83,9 @@ const styles = `
     background:rgba(255,193,7,.1);
     color:#ffc107;
     transition:.3s;
+    padding:0.75rem 1rem;
+    margin:0.75rem 0;
+    border-radius:0.5rem;
   }
   .vedic-quote:hover{ background:rgba(255,193,7,.2); }
 
@@ -94,76 +97,104 @@ const styles = `
   .custom-scroll::-webkit-scrollbar-thumb:hover{
     background:linear-gradient(180deg,#ffd54f,#c084fc);
   }
+
+  .join-container {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .vedic-button {
+    padding: 0.9rem 1.75rem;
+    border-radius: 9999px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.95rem;
+    background-image: linear-gradient(to right, #fde047, #fb923c);
+    color: #111827;
+    box-shadow: 0 0 18px rgba(251, 191, 36, 0.4);
+    transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+  }
+
+  .vedic-button:hover {
+    transform: translateY(-1px) scale(1.03);
+    box-shadow: 0 0 28px rgba(251, 191, 36, 0.55);
+  }
+
+  .vedic-button:active {
+    transform: scale(0.97);
+    box-shadow: 0 0 16px rgba(251, 191, 36, 0.35);
+  }
 `;
 
+// Inject styles only once
+if (typeof document !== "undefined" && !document.getElementById("why-codeveda-styles")) {
+  const styleSheet = document.createElement("style");
+  styleSheet.id = "why-codeveda-styles";
+  styleSheet.textContent = styles;
+  document.head.appendChild(styleSheet);
+}
 
-// Inject styles
-const styleSheet = document.createElement("style");
-styleSheet.textContent = styles;
-document.head.appendChild(styleSheet);
-
-// ============= UPDATED HEADER COMPONENT =============
+// ============= UPDATED HEADER COMPONENT (light animation) =============
 const UpdatedHeader = () => {
   return (
     <motion.header 
       className="relative z-10 text-center pt-10 pb-6 px-4"
-      initial={{ opacity: 0, y: -50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
+      initial={{ opacity: 0, y: -30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.4 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
     >
       <motion.div
-        initial={{ opacity: 0, y: -20, scale: 0.96 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
+        initial={{ opacity: 0, y: -10, scale: 0.98 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        viewport={{ once: true, amount: 0.4 }}
+        transition={{ duration: 0.4, delay: 0.1 }}
         className="inline-block px-4 py-2 rounded-full border border-yellow-300/40 bg-black/30 backdrop-blur-md text-xs tracking-widest uppercase text-yellow-200/80"
-        whileHover={{ 
-          scale: 1.05,
-          boxShadow: "0 0 20px rgba(255,215,0,0.4)",
-          borderColor: "rgba(252, 211, 77, 0.6)"
-        }}
+        whileHover={{ scale: 1.03 }}
       >
         Cosmic · Vedic · Code
       </motion.div>
 
       <motion.h1
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.4 }}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.4 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
         className="mt-4 text-4xl sm:text-5xl md:text-6xl font-bold tracking-wide"
       >
         <motion.span 
-          className="bg-gradient-to-r from-cyan-300 via-indigo-300 to-purple-400 bg-clip-text text-transparent"
-          whileHover={{ scale: 1.05 }}
-          style={{ display: 'inline-block' }}
+          className="bg-gradient-to-r from-cyan-300 via-indigo-300 to-purple-400 bg-clip-text text-transparent inline-block"
+          whileHover={{ scale: 1.03 }}
         >
           Why{" "}
         </motion.span>
-             <motion.span 
-        className="golden-glow cursor-pointer inline-block font-extrabold text-yellow-300"
-        whileHover={{ scale: 1.05 }}
-      >
-        <span className="text-yellow-300">Code</span>
-        <span className="purple-glow">Veda</span>
-      </motion.span>
 
+        <motion.span 
+          className="golden-glow cursor-pointer inline-block font-extrabold text-yellow-300"
+          whileHover={{ scale: 1.03 }}
+        >
+          <span className="text-yellow-300">Code</span>
+          <span className="purple-glow">Veda</span>
+        </motion.span>
 
         <span className="text-cyan-200"> </span>
+
         <motion.span
-          initial={{ scale: 0, rotate: -180 }}
-          animate={{ scale: 1, rotate: 0 }}
-          transition={{ delay: 0.8, type: "spring", stiffness: 200, damping: 15 }}
+          initial={{ scale: 0.8 }}
+          whileInView={{ scale: 1 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ delay: 0.5, type: "spring", stiffness: 120, damping: 14 }}
           className="inline-block px-3 py-1 rounded-lg bg-gradient-to-r from-yellow-400/20 to-purple-500/20 border-2 border-yellow-400/50 text-yellow-300 text-2xl sm:text-3xl md:text-4xl font-bold version-badge"
-          whileHover={{ 
-            scale: 1.1,
-            boxShadow: "0 0 30px rgba(255,215,0,0.6)",
-          }}
+          whileHover={{ scale: 1.06 }}
         >
           2.0
         </motion.span>
+
         <motion.span 
-          className="text-cyan-200"
-          whileHover={{ scale: 1.1 }}
-          style={{ display: 'inline-block' }}
+          className="text-cyan-200 inline-block"
+          whileHover={{ scale: 1.06 }}
         >
           ?
         </motion.span>
@@ -171,16 +202,19 @@ const UpdatedHeader = () => {
 
       <motion.p
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.6, duration: 0.6 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, amount: 0.4 }}
+        transition={{ delay: 0.4, duration: 0.5 }}
         className="mt-3 text-sm sm:text-base text-indigo-200/90 italic"
       >
         आधुनिक तकनीक • वैदिक ज्ञान • दिव्य कॉस्मिक यात्रा
       </motion.p>
+
       <motion.p 
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.7, duration: 0.6 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, amount: 0.4 }}
+        transition={{ delay: 0.5, duration: 0.5 }}
         className="mt-1 text-xs sm:text-sm text-slate-300/80"
       >
         The evolution of modern technology with ancient wisdom, written in the language of stars.
@@ -189,25 +223,23 @@ const UpdatedHeader = () => {
   );
 };
 
-// ============= OPTIMIZED HERO SECTION =============
+// ============= OPTIMIZED HERO SECTION (no heavy infinite motion) =============
 const HeroSection = () => {
   const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
-    }
-  };
-
-  const itemVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5, ease: "easeOut" }
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 16 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.45, ease: "easeOut" }
     }
   };
 
@@ -216,48 +248,37 @@ const HeroSection = () => {
       className="relative z-10 max-w-6xl mx-auto px-4 py-12"
       variants={containerVariants}
       initial="hidden"
-      animate="visible"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.35 }}
     >
-      {/* Simplified Background Particles */}
+      {/* Simplified soft glows - static, not moving infinitely */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
+        <div
           className="absolute w-64 h-64 rounded-full blur-3xl"
           style={{ 
-            background: 'radial-gradient(circle, #ffd700 0%, transparent 70%)',
-            opacity: 0.15
+            background: "radial-gradient(circle, rgba(255,215,0,0.25) 0%, transparent 70%)",
+            left: "10%",
+            top: "18%",
+            opacity: 0.18
           }}
-          animate={{
-            x: [0, 50, 0],
-            y: [0, -30, 0],
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
         />
-        <motion.div
-          className="absolute w-48 h-48 rounded-full blur-3xl"
+        <div
+          className="absolute w-56 h-56 rounded-full blur-3xl"
           style={{ 
-            background: 'radial-gradient(circle, #a855f7 0%, transparent 70%)',
-            right: '10%',
-            top: '20%',
-            opacity: 0.1
+            background: "radial-gradient(circle, rgba(168,85,247,0.25) 0%, transparent 70%)",
+            right: "10%",
+            bottom: "5%",
+            opacity: 0.16
           }}
-          animate={{
-            x: [0, -40, 0],
-            y: [0, 30, 0],
-          }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
         />
       </div>
 
       {/* Main Title */}
-      <motion.div variants={itemVariants} className="text-center mb-12">
+      <motion.div variants={itemVariants} className="text-center mb-12 relative">
         <motion.div
           variants={itemVariants}
           className="inline-flex items-center gap-2 px-6 py-3 rounded-full border-2 border-yellow-400/40 bg-black/40 backdrop-blur-md mb-6 cursor-pointer"
-          whileHover={{ 
-            scale: 1.05,
-            boxShadow: "0 0 20px rgba(255,215,0,0.3)",
-            borderColor: "rgba(252, 211, 77, 0.6)",
-          }}
+          whileHover={{ scale: 1.03 }}
         >
           <HiSparkles className="w-5 h-5 text-yellow-300" />
           <span className="text-yellow-300 font-bold text-lg tracking-wide golden-glow">
@@ -266,7 +287,7 @@ const HeroSection = () => {
         </motion.div>
 
         <motion.h2 
-          variants={itemVariants} 
+          variants={itemVariants}
           className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4"
         >
           <span className="gradient-text">
@@ -275,7 +296,7 @@ const HeroSection = () => {
         </motion.h2>
 
         <motion.p 
-          variants={itemVariants} 
+          variants={itemVariants}
           className="text-indigo-200/90 text-base sm:text-lg max-w-3xl mx-auto"
         >
           From a spark of curiosity to a cosmic movement
@@ -286,18 +307,12 @@ const HeroSection = () => {
       <motion.div
         variants={itemVariants}
         className="relative bg-gradient-to-br from-black/70 via-purple-950/40 to-black/70 rounded-3xl border-2 border-yellow-500/30 p-6 sm:p-8 backdrop-blur-xl mb-8"
-        whileHover={{ 
-          y: -5,
-          boxShadow: "0 15px 40px rgba(255, 215, 0, 0.2)",
-          borderColor: "rgba(251, 191, 36, 0.5)",
-        }}
+        whileHover={{ y: -3 }}
       >
         {/* Version Badge */}
         <motion.div 
           className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-400/20 border border-yellow-400/40 mb-6 version-badge"
-          whileHover={{ 
-            scale: 1.05,
-          }}
+          whileHover={{ scale: 1.03 }}
         >
           <span className="text-2xl">🌟</span>
           <span className="text-yellow-300 font-bold text-lg">CodeVeda 1.0</span>
@@ -307,6 +322,7 @@ const HeroSection = () => {
         {/* Story Content */}
         <motion.div 
           className="space-y-4 text-slate-200 leading-relaxed"
+          variants={itemVariants}
         >
           <p className="text-base sm:text-lg">
             Version 1 unleashed <span className="text-yellow-300 font-bold text-xl golden-glow">7000+</span> registrations, 
@@ -328,14 +344,11 @@ const HeroSection = () => {
             <motion.div
               key={stat.label}
               className="stat-card text-center p-4 rounded-xl bg-gradient-to-br from-yellow-400/10 to-transparent border border-yellow-400/20"
-              whileHover={{ 
-                scale: 1.05,
-                y: -5,
-                boxShadow: "0 10px 25px rgba(255,215,0,0.2)",
-              }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 + index * 0.1 }}
+              whileHover={{ scale: 1.03, y: -3 }}
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.4, delay: 0.1 + index * 0.05 }}
             >
               <div className="text-2xl mb-2">{stat.icon}</div>
               <div className={`text-3xl sm:text-4xl font-bold ${stat.color} mb-1`}>
@@ -358,9 +371,7 @@ const HeroSection = () => {
         <div className="relative flex justify-center">
           <motion.span 
             className="bg-black/60 px-6 py-2 rounded-full border-2 border-yellow-400/40 text-yellow-300 font-semibold text-sm backdrop-blur-md"
-            whileHover={{ 
-              scale: 1.05,
-            }}
+            whileHover={{ scale: 1.03 }}
           >
             And thus...
           </motion.span>
@@ -370,7 +381,7 @@ const HeroSection = () => {
   );
 };
 
-// ============= CODEVEDA 2.0 ANNOUNCEMENT =============
+// ============= CODEVEDA 2.0 ANNOUNCEMENT (light scroll reveal) =============
 const CodeVeda2Announcement = () => {
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -384,20 +395,17 @@ const CodeVeda2Announcement = () => {
   return (
     <motion.div
       variants={itemVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.4 }}
       className="relative bg-gradient-to-br from-purple-950/60 via-black/70 to-purple-950/60 rounded-3xl border-2 border-purple-500/40 p-6 sm:p-8 backdrop-blur-xl overflow-hidden group"
-      whileHover={{ 
-        y: -5,
-        boxShadow: "0 20px 50px rgba(168, 85, 247, 0.3)",
-        borderColor: "rgba(168, 85, 247, 0.6)",
-      }}
+      whileHover={{ y: -3 }}
     >
       {/* Content */}
       <div className="relative z-10 text-center">
         <motion.div
           className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-yellow-400/30 to-purple-500/30 border-2 border-yellow-400/50 mb-6 version-badge"
-          whileHover={{ 
-            scale: 1.05,
-          }}
+          whileHover={{ scale: 1.03 }}
         >
           <span className="text-3xl">✨</span>
           <span className="text-yellow-300 font-bold text-2xl sm:text-3xl golden-glow">
@@ -405,120 +413,86 @@ const CodeVeda2Announcement = () => {
           </span>
         </motion.div>
 
-        <motion.div className="space-y-4">
+        <div className="space-y-4">
           <motion.h3 
             className="text-3xl sm:text-4xl md:text-5xl font-bold"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ delay: 0.1, duration: 0.5 }}
           >
-            <span className="golden-glow">Larger.</span>{' '}
-            <span className="purple-glow">Deeper.</span>{' '}
+            <span className="golden-glow">Larger.</span>{" "}
+            <span className="purple-glow">Deeper.</span>{" "}
             <span className="text-cyan-300">More Cosmic.</span>
           </motion.h3>
           
           <motion.p 
             className="text-slate-200 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed"
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ delay: 0.25, duration: 0.5 }}
           >
             An expanded universe of knowledge where ancient wisdom meets cutting-edge innovation, 
             where every line of code carries the weight of <span className="sanskrit">dharma</span>, 
             and every project becomes a sacred act of creation.
           </motion.p>
 
-          <motion.button
-            whileHover={{ 
-              scale: 1.05,
-              boxShadow: "0 0 30px rgba(255, 215, 0, 0.6)",
-            }}
-            whileTap={{ scale: 0.95 }}
-            className="mt-6 px-8 py-4 rounded-full bg-gradient-to-r from-yellow-400 via-amber-400 to-orange-500 text-black font-bold text-lg shadow-lg transition-all"
-            style={{
-              boxShadow: '0 0 20px rgba(255, 215, 0, 0.4)'
-            }}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7 }}
-          >
-            <a 
-              href="https://vision.hack2skill.com/event/codeveda2/?utm_source=google.com&utm_medium=Mohit"
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="flex items-center gap-2"
-            >
-              Join the Evolution 
-              <span>→</span>
-            </a>
-          </motion.button>
-        </motion.div>
+    <motion.button
+  className="group relative mt-6 px-8 py-4 rounded-full bg-gradient-to-r from-yellow-400 via-amber-400 to-orange-500 text-black font-bold text-lg shadow-lg overflow-hidden"
+  initial={{ opacity: 0, y: 18 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true, amount: 0.4 }}
+  transition={{ delay: 0.35, duration: 0.5 }}
+
+  whileHover={{ scale: 1.08 }}         // visible hover growth
+  whileTap={{ scale: 0.95 }}  
+>
+
+  {/* 🔥 Bright shine streak animation */}
+  <motion.div
+    className="absolute top-0 left-0 w-full h-full opacity-0 group-hover:opacity-100"
+    style={{
+      background:
+        "linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.55) 50%, transparent 100%)",
+    }}
+    animate={{ x: ["-150%", "150%"] }}
+    transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
+  />
+
+  {/* 🌟 Glow aura on hover */}
+  <motion.div
+    className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-80 blur-2xl"
+    style={{
+      background: "radial-gradient(circle, rgba(255,255,255,0.45) 0%, transparent 75%)",
+    }}
+    transition={{ duration: 0.45 }}
+  />
+
+  <a 
+    href="https://vision.hack2skill.com/event/codeveda2/?utm_source=google.com&utm_medium=Mohit"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="relative z-10 flex items-center gap-2"
+  >
+    Join the Evolution 
+
+    {/* Animated arrow → always moves */}
+    <motion.span
+      animate={{ x: [0, 7, 0] }}
+      transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+      className="inline-block"
+    >
+      →
+    </motion.span>
+  </a>
+</motion.button>
+
+
+
+        </div>
       </div>
     </motion.div>
-  );
-};
-
-// ============= SIMPLIFIED BACKGROUND ANIMATIONS =============
-const BackgroundAnimations = ({ mousePos }) => {
-  return (
-    <>
-      {/* Simplified Orbital Particles */}
-      <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
-        {[...Array(3)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full"
-            style={{
-              width: '100px',
-              height: '100px',
-              background: `radial-gradient(circle, ${
-                i % 3 === 0 ? 'rgba(255,215,0,0.1)' : 
-                i % 3 === 1 ? 'rgba(168,85,247,0.1)' : 
-                'rgba(34,211,238,0.1)'
-              } 0%, transparent 70%)`,
-              left: '50%',
-              top: '50%',
-            }}
-            animate={{
-              rotate: 360,
-            }}
-            transition={{
-              duration: 20 + i * 5,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-          >
-            <div
-              style={{
-                width: '100%',
-                height: '100%',
-                transform: `translateX(${150 + i * 50}px)`,
-              }}
-            />
-          </motion.div>
-        ))}
-      </div>
-
-      {/* Simple Glow following mouse */}
-      <motion.div
-        className="absolute w-64 h-64 rounded-full blur-3xl pointer-events-none"
-        style={{
-          background: 'radial-gradient(circle, rgba(255,215,0,0.1) 0%, rgba(168,85,247,0.05) 50%, transparent 70%)',
-          left: `${mousePos.x * 100}%`,
-          top: `${mousePos.y * 100}%`,
-          transform: 'translate(-50%, -50%)',
-          opacity: 0.2
-        }}
-        animate={{
-          scale: [1, 1.2, 1],
-        }}
-        transition={{
-          duration: 5,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-    </>
   );
 };
 
@@ -671,12 +645,10 @@ const mantras = [
   "वसुधैव कुटुम्बकम्"
 ];
 
-// ============= MAIN COMPONENT =============
+// ============= MAIN COMPONENT (Optimized) =============
 const WhyCodeVeda = () => {
   const [currentChapter, setCurrentChapter] = useState(0);
   const [search, setSearch] = useState("");
-  const [audioEnabled, setAudioEnabled] = useState(false);
-  const [mousePos, setMousePos] = useState({ x: 0.5, y: 0.5 });
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -700,13 +672,6 @@ const WhyCodeVeda = () => {
     }
   }, [filteredChapters, currentChapter]);
 
-  const handleMouseMove = (e) => {
-    const { clientX, clientY } = e;
-    const x = clientX / window.innerWidth;
-    const y = clientY / window.innerHeight;
-    setMousePos({ x, y });
-  };
-
   const current = chapters[currentChapter];
   const mantraForChapter = mantras[currentChapter % mantras.length];
 
@@ -729,13 +694,9 @@ const WhyCodeVeda = () => {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.4 }}
+      className="relative"
     >
-      {/* Background Animations */}
-      <BackgroundAnimations mousePos={mousePos} />
-
-      
-      
       {/* Main Content Structure */}
       <div className="relative z-10">
         <UpdatedHeader />
@@ -749,25 +710,23 @@ const WhyCodeVeda = () => {
         {/* Chapters Section */}
         <motion.main 
           className="relative z-10 max-w-6xl mx-auto px-4 pb-16 pt-8"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.5 }}
         >
           <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,2fr)] gap-6 lg:gap-8">
             {/* Sidebar */}
             <motion.aside 
               className="bg-gradient-to-br from-black/60 via-purple-950/30 to-black/60 border-2 border-yellow-500/30 rounded-2xl p-5 backdrop-blur-xl max-h-[75vh] overflow-hidden flex flex-col"
-              whileHover={{ 
-                y: -2,
-              }}
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.3 }}
+              whileHover={{ y: -2 }}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.45 }}
             >
               {/* Search Bar */}
-              <motion.div 
-                className="flex items-center gap-2 rounded-xl bg-slate-900/70 border-2 border-slate-600/80 px-3 py-2.5 mb-4 shadow-inner"
-              >
+              <div className="flex items-center gap-2 rounded-xl bg-slate-900/70 border-2 border-slate-600/80 px-3 py-2.5 mb-4 shadow-inner">
                 <FiSearch className="w-5 h-5 text-yellow-300" />
                 <input
                   type="text"
@@ -776,7 +735,7 @@ const WhyCodeVeda = () => {
                   onChange={(e) => setSearch(e.target.value)}
                   className="w-full bg-transparent text-sm outline-none text-slate-100 placeholder:text-slate-400"
                 />
-              </motion.div>
+              </div>
 
               <div className="flex items-center justify-between mb-3">
                 <span className="text-xs uppercase tracking-wide text-slate-300/80">
@@ -793,7 +752,7 @@ const WhyCodeVeda = () => {
                   const realIndex = chapters.indexOf(ch);
                   const isActive = realIndex === currentChapter;
                   return (
-                    <motion.button
+                    <button
                       key={ch.title + realIndex}
                       onClick={() => setCurrentChapter(realIndex)}
                       className={`w-full text-left rounded-xl px-3 py-3 transition-all duration-200 ${
@@ -801,12 +760,6 @@ const WhyCodeVeda = () => {
                           ? "bg-gradient-to-r from-yellow-400/25 via-yellow-300/15 to-purple-500/20 border-2 border-yellow-300/50 shadow-lg"
                           : "bg-slate-900/40 border-2 border-slate-700/50 hover:border-yellow-200/40 hover:bg-slate-900/70"
                       }`}
-                      whileHover={{ 
-                        scale: 1.02,
-                      }}
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: idx * 0.03 }}
                     >
                       <div className="flex items-center gap-3">
                         <span
@@ -829,7 +782,7 @@ const WhyCodeVeda = () => {
                           <div className="text-xs text-slate-300 truncate">{ch.english}</div>
                         </div>
                       </div>
-                    </motion.button>
+                    </button>
                   );
                 })}
 
@@ -844,12 +797,11 @@ const WhyCodeVeda = () => {
             {/* Main Content */}
             <motion.section 
               className="relative bg-gradient-to-br from-black/70 via-purple-950/40 to-black/70 rounded-3xl border-2 border-yellow-500/40 backdrop-blur-2xl shadow-2xl overflow-hidden min-h-[60vh] flex flex-col"
-              whileHover={{ 
-                y: -2,
-              }}
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.4 }}
+              whileHover={{ y: -2 }}
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.45 }}
             >
               <div className="relative z-10 px-6 sm:px-8 md:px-10 pt-7 pb-6 flex-1 flex flex-col">
                 <AnimatePresence mode="wait">
@@ -858,7 +810,7 @@ const WhyCodeVeda = () => {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.25 }}
                     className="flex-1 flex flex-col"
                   >
                     {/* Chapter Header */}
@@ -901,14 +853,12 @@ const WhyCodeVeda = () => {
                       <motion.button
                         onClick={() => setCurrentChapter((prev) => (prev > 0 ? prev - 1 : prev))}
                         disabled={currentChapter === 0}
-                        className={`px-4 py-2 rounded-full border-2 text-sm transition ${
+                        className={`px-4 py-2 rounded-full border-2 text-sm transition bg-slate-900/60 ${
                           currentChapter === 0
                             ? "border-slate-600 text-slate-500 cursor-not-allowed"
                             : "border-slate-500 text-slate-100 hover:border-yellow-300 hover:text-yellow-200"
-                        } bg-slate-900/60`}
-                        whileHover={currentChapter !== 0 ? { 
-                          scale: 1.05,
-                        } : {}}
+                        }`}
+                        whileHover={currentChapter !== 0 ? { scale: 1.03 } : {}}
                       >
                         ← Previous
                       </motion.button>
@@ -924,9 +874,7 @@ const WhyCodeVeda = () => {
                             ? "opacity-60 cursor-not-allowed"
                             : ""
                         }`}
-                        whileHover={currentChapter !== chapters.length - 1 ? { 
-                          scale: 1.05,
-                        } : {}}
+                        whileHover={currentChapter !== chapters.length - 1 ? { scale: 1.03 } : {}}
                       >
                         <span className="flex items-center gap-1">
                           Next 
@@ -944,7 +892,7 @@ const WhyCodeVeda = () => {
                         initial={{ opacity: 0, y: 5 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -5 }}
-                        transition={{ duration: 0.3 }}
+                        transition={{ duration: 0.25 }}
                         className="inline-flex items-center px-5 py-2.5 rounded-full bg-yellow-300/10 border-2 border-yellow-300/40 text-sm text-yellow-100 shadow-lg backdrop-blur-sm"
                       >
                         <span className="mr-2 text-yellow-200/90 text-base">✦</span>
