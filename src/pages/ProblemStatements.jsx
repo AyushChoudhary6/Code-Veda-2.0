@@ -138,13 +138,13 @@ const ProblemStatements = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-cosmic-900 text-white font-sans overflow-x-hidden">
+    <div className="bg-cosmic-900 text-white font-sans overflow-x-hidden">
       <CosmicBackground />
       <Navbar />
 
-      <div className="relative z-10 pt-2 pb-12 px-4 max-w-5xl mx-auto">
+      <div className="relative z-10 px-4 max-w-5xl mx-auto" style={{ marginTop: '-800px', paddingTop: '80px' }}>
         {/* Header */}
-        <header className="text-center mb-6">
+        <header className="text-center mb-4">
           <motion.h1
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
