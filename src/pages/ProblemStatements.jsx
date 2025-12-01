@@ -142,7 +142,7 @@ const ProblemStatements = () => {
       <CosmicBackground />
       <Navbar />
 
-      <div className="relative z-10 px-4 max-w-5xl mx-auto" style={{ paddingTop: '90px', paddingBottom: '3rem' }}>
+      <div className="relative z-10 px-4 max-w-5xl mx-auto pt-20 md:pt-24 pb-12">
         {/* Header */}
         <header className="text-center mb-4 md:mb-6">
           <motion.h1
