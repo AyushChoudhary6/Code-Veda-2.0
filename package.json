@@ -20,7 +20,11 @@
     "react-router-dom": "^6.15.0",
     "react-spinners": "^0.17.0",
     "react-toastify": "^11.0.5",
-    "styled-components": "^6.1.19"
+    "styled-components": "^6.1.19",
+    "@react-three/drei": "^9.88.0",
+    "@react-three/fiber": "^8.15.0",
+    "aos": "^2.3.4",
+    "three": "^0.158.0"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.0.3",
