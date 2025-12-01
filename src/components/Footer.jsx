@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 const Footer = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -15,6 +17,11 @@ const Footer = () => {
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
+
+  const handleNavigation = (path) => {
+    navigate(path);
+    window.scrollTo(0, 0);
+  };
 
   return (
     <FooterWrapper>
@@ -36,13 +43,13 @@ const Footer = () => {
         <LinksContainer>
           <LinkColumn>
             <ColumnTitle>Navigation</ColumnTitle>
-            <FooterLink href="/">Home</FooterLink>
-            <FooterLink href="/why-code-veda">Why CodeVeda</FooterLink>
-            <FooterLink href="/problem-statements">Problem Statements</FooterLink>
-            <FooterLink href="/schedule">Schedule</FooterLink>
-            <FooterLink href="/prizes">Prizes</FooterLink>
-            <FooterLink href="/sponsors">Sponsors</FooterLink>
-            <FooterLink href="/team">Team</FooterLink>
+            <FooterLink onClick={() => handleNavigation('/')}>Home</FooterLink>
+            <FooterLink onClick={() => handleNavigation('/why-code-veda')}>Why CodeVeda</FooterLink>
+            <FooterLink onClick={() => handleNavigation('/problem-statements')}>Problem Statements</FooterLink>
+            <FooterLink onClick={() => handleNavigation('/schedule')}>Schedule</FooterLink>
+            <FooterLink onClick={() => handleNavigation('/prizes')}>Prizes</FooterLink>
+            <FooterLink onClick={() => handleNavigation('/sponsors')}>Sponsors</FooterLink>
+            <FooterLink onClick={() => handleNavigation('/team')}>Team</FooterLink>
           </LinkColumn>
 
           <LinkColumn>
@@ -162,6 +169,7 @@ const StarField = styled.div`
   opacity: 0.5;
   transform: translate(${props => props.mouseX * 10}px, ${props => props.mouseY * 10}px);
   transition: transform 0.3s ease-out;
+  pointer-events: none;
 `;
 
 const MandalaOverlay = styled.div`
@@ -314,16 +322,20 @@ const ColumnTitle = styled.h3`
   }
 `;
 
-const FooterLink = styled.a`
+const FooterLink = styled.button`
   color: rgba(255, 255, 255, 0.7);
   font-size: 1rem;
   margin-bottom: 0.8rem;
   transition: all 0.3s ease;
   position: relative;
   padding-left: 0;
-  text-decoration: none;
+  cursor: pointer;
   display: inline-block;
   width: fit-content;
+  background: none;
+  border: none;
+  text-align: left;
+  font-family: inherit;
 
   &::before {
     content: '→';
@@ -343,6 +355,12 @@ const FooterLink = styled.a`
       opacity: 1;
       left: 0;
     }
+  }
+
+  &:focus {
+    outline: 2px solid #ffc107;
+    outline-offset: 2px;
+    border-radius: 4px;
   }
 `;
 

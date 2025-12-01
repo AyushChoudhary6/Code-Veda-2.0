@@ -32,36 +32,36 @@ const HackathonSchedule = () => {
       date: "TBA",
       title: "PPT Submission",
       organization: "Phase 2",
-      // description1: "PPT submission starts on 15th July 2025",
-      // description2: "Deadline for PPT submission is 25th August 2025",
-      // description3: "Project description should be added alongside the PPT",
+      description1: "Submit a detailed presentation outlining your project idea, approach, and potential impact",
+      description2: "Include your tech stack, implementation strategy, and team member roles",
+      description3: "Projects will be evaluated based on innovation, feasibility, and alignment with problem statements",
       tags: ["Planning", "Strategy"],
-      // icon: "💡",
-      // achievement: "300+ Project Ideas Submitted"
+      icon: "💡",
+      achievement: "Ideas Transform Into Innovation"
     },
     {
       id: 3,
       date: "TBA",
       title: "Online Round",
       organization: "Phase 3",
-      // description1: "Online round will be conducted on 6th September 2025",
-      // description2: "Shortlisted teams from the PPT round will move to the online round",
-      // description3: "Results of this round will be declared next day, i.e. on 7th September 2025",
+      description1: "Shortlisted teams will participate in virtual coding and development challenges",
+      description2: "Demonstrate your technical skills and present project progress to expert judges",
+      description3: "Top-performing teams will advance to the grand finale at the offline round",
       tags: ["Development", "Pitching"],
-      // icon: "⚡",
-      // achievement: "24/7 Mentor Support Active"
+      icon: "⚡",
+      achievement: "Where Code Meets Excellence"
     },
     {
       id: 4,
       date: "TBA",
       title: "Final Offline Round",
       organization: "Phase 4",
-      // description1: "Offline round will be conducted on 13th September 2025 at Microsoft, Gurugram",
-      // description2: "It will be a 8 hours high energy hackathon",
-      // description3: "Present your project/s to judges, BEST OF LUCK :)",
+      description1: "High-intensity in-person hackathon where finalists compete for the championship",
+      description2: "Present your fully functional projects, demonstrate live features, and defend your solutions",
+      description3: "Network with industry experts, showcase your talent, and compete for exciting prizes!",
       tags: ["Presentation", "Demo"],
-      // icon: "🏆",
-      // achievement: "Top 50 Teams Selected"
+      icon: "🏆",
+      achievement: "Champions Are Born Here"
     }
   ];
 
