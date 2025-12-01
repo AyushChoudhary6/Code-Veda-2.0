@@ -8,10 +8,21 @@ export default {
     extend: {
       colors: {
         cosmic: {
-          900: '#0a0a1a', // Example dark background
+          900: '#0a0a1a',
         },
         divine: {
-          silver: '#e0e0e0', // Example text color
+          silver: '#e0e0e0',
+          gold: '#ffd700',
+          purple: '#9d4edd',
+        }
+      },
+      animation: {
+        'scroll-lr': 'scrollLR 60s linear infinite',
+      },
+      keyframes: {
+        scrollLR: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
         }
       }
     },
