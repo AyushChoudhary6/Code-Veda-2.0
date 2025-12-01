@@ -1,9 +1,27 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
+  const navigate = useNavigate()
+
   const handleScroll = (id) => {
     const el = document.getElementById(id)
-    if (el) el.scrollIntoView({ behavior: 'smooth' })
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' })
+    } else if (id === 'why-code-veda') {
+      navigate('/why-code-veda')
+    } else if (id === 'schedule') {
+      navigate('/schedule')
+    } else {
+      // If we are on a different page and try to scroll to a home section, go home first
+      navigate('/')
+      // Note: This simple logic might need a timeout or context to scroll after nav, 
+      // but for now let's just ensure navigation works.
+      setTimeout(() => {
+        const el = document.getElementById(id)
+        if (el) el.scrollIntoView({ behavior: 'smooth' })
+      }, 100)
+    }
   }
 
   return (

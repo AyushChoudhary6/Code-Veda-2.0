@@ -1,112 +1,15 @@
-import React, { useState, useMemo, useEffect, useRef } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiSearch, FiVolume2, FiVolumeX } from "react-icons/fi";
+import { FiSearch } from "react-icons/fi";
 import { HiSparkles } from "react-icons/hi";
-
-// ============= Code by Manav =============
-const styles = `
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-  }
-
-  @keyframes pulse-glow {
-    0%, 100% { opacity: 0.6; }
-    50% { opacity: 1; }
-  }
-
-  /* 🌌 Same background as footer */
-  body {
-    background: linear-gradient(135deg, #140724 0%, #0f0622 50%, #1a0b2e 100%);
-    min-height: 100vh;
-    color: #fff;
-    position: relative;
-    overflow-x: hidden;
-  }
-
-  /* ⭐ Subtle starfield like footer */
-  body::before {
-    content: "";
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-image:
-      radial-gradient(2px 2px at 20% 30%, white, transparent),
-      radial-gradient(2px 2px at 60% 70%, white, transparent),
-      radial-gradient(1px 1px at 50% 50%, white, transparent),
-      radial-gradient(1px 1px at 80% 10%, white, transparent),
-      radial-gradient(2px 2px at 90% 60%, white, transparent),
-      radial-gradient(1px 1px at 33% 80%, white, transparent),
-      radial-gradient(1px 1px at 15% 90%, white, transparent),
-      radial-gradient(2px 2px at 70% 20%, white, transparent);
-    background-size: 200% 200%;
-    opacity: .4;
-    animation: pulse-glow 4s ease-in-out infinite;
-    pointer-events:none;
-  }
-
-  /* 🟡 Golden mandala-like glow overlay */
-  body::after {
-    content:"";
-    position:fixed;
-    left:50%; top:50%;
-    width:650px; height:650px;
-    transform:translate(-50%, -50%);
-    background:radial-gradient(circle, transparent 30%, rgba(255,193,7,.05) 55%, transparent 75%);
-    border-radius:50%;
-    opacity:.4;
-    animation: float 6s infinite ease-in-out;
-    pointer-events:none;
-    z-index:0;
-  }
-
-  .golden-glow{
-    text-shadow:0 0 10px rgba(255,193,7,.6);
-    transition:.3s;
-  }
-  .golden-glow:hover{ text-shadow:0 0 20px rgba(255,193,7,.8); }
-
-  .purple-glow{
-    text-shadow:0 0 10px rgba(168,85,247,.6);
-    transition:.3s;
-  }
-  .purple-glow:hover{ text-shadow:0 0 20px rgba(168,85,247,.8); }
-
-  .gradient-text{
-    background:linear-gradient(90deg,#ffc107,#a855f7,#22d3ee);
-    background-size:200% 200%;
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-  }
-
-  .vedic-quote{
-    border-left:4px solid #ffc107;
-    background:rgba(255,193,7,.1);
-    color:#ffc107;
-    transition:.3s;
-  }
-  .vedic-quote:hover{ background:rgba(255,193,7,.2); }
-
-  .custom-scroll::-webkit-scrollbar{ width:6px; }
-  .custom-scroll::-webkit-scrollbar-thumb{
-    background:linear-gradient(180deg,#ffc107,#a855f7);
-    border-radius:10px;
-  }
-  .custom-scroll::-webkit-scrollbar-thumb:hover{
-    background:linear-gradient(180deg,#ffd54f,#c084fc);
-  }
-`;
-
-
-// Inject styles
-const styleSheet = document.createElement("style");
-styleSheet.textContent = styles;
-document.head.appendChild(styleSheet);
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 // ============= UPDATED HEADER COMPONENT =============
 const UpdatedHeader = () => {
   return (
     <motion.header 
-      className="relative z-10 text-center pt-10 pb-6 px-4"
+      className="relative z-10 text-center pt-24 pb-6 px-4"
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
@@ -132,18 +35,17 @@ const UpdatedHeader = () => {
         className="mt-4 text-4xl sm:text-5xl md:text-6xl font-bold tracking-wide"
       >
         <motion.span 
-          className="bg-gradient-to-r from-cyan-300 via-indigo-300 to-purple-400 bg-clip-text text-transparent"
+          className="bg-gradient-to-r from-cyan-300 via-indigo-300 to-purple-400 bg-clip-text text-transparent inline-block"
           whileHover={{ scale: 1.05 }}
-          style={{ display: 'inline-block' }}
         >
           Why{" "}
         </motion.span>
              <motion.span 
-        className="golden-glow cursor-pointer inline-block font-extrabold text-yellow-300"
+        className="cursor-pointer inline-block font-extrabold text-yellow-300 [text-shadow:0_0_10px_rgba(255,193,7,0.6)] hover:[text-shadow:0_0_20px_rgba(255,193,7,0.8)] transition-all duration-300"
         whileHover={{ scale: 1.05 }}
       >
         <span className="text-yellow-300">Code</span>
-        <span className="purple-glow">Veda</span>
+        <span className="[text-shadow:0_0_10px_rgba(168,85,247,0.6)] hover:[text-shadow:0_0_20px_rgba(168,85,247,0.8)] transition-all duration-300">Veda</span>
       </motion.span>
 
 
@@ -152,7 +54,7 @@ const UpdatedHeader = () => {
           initial={{ scale: 0, rotate: -180 }}
           animate={{ scale: 1, rotate: 0 }}
           transition={{ delay: 0.8, type: "spring", stiffness: 200, damping: 15 }}
-          className="inline-block px-3 py-1 rounded-lg bg-gradient-to-r from-yellow-400/20 to-purple-500/20 border-2 border-yellow-400/50 text-yellow-300 text-2xl sm:text-3xl md:text-4xl font-bold version-badge"
+          className="inline-block px-3 py-1 rounded-lg bg-gradient-to-r from-yellow-400/20 to-purple-500/20 border-2 border-yellow-400/50 text-yellow-300 text-2xl sm:text-3xl md:text-4xl font-bold"
           whileHover={{ 
             scale: 1.1,
             boxShadow: "0 0 30px rgba(255,215,0,0.6)",
@@ -161,9 +63,8 @@ const UpdatedHeader = () => {
           2.0
         </motion.span>
         <motion.span 
-          className="text-cyan-200"
+          className="text-cyan-200 inline-block"
           whileHover={{ scale: 1.1 }}
-          style={{ display: 'inline-block' }}
         >
           ?
         </motion.span>
@@ -260,8 +161,8 @@ const HeroSection = () => {
           }}
         >
           <HiSparkles className="w-5 h-5 text-yellow-300" />
-          <span className="text-yellow-300 font-bold text-lg tracking-wide golden-glow">
-            Why Code<span className="purple-glow">Veda</span> 2.0?
+          <span className="text-yellow-300 font-bold text-lg tracking-wide [text-shadow:0_0_10px_rgba(255,193,7,0.6)] hover:[text-shadow:0_0_20px_rgba(255,193,7,0.8)] transition-all duration-300">
+            Why Code<span className="[text-shadow:0_0_10px_rgba(168,85,247,0.6)] hover:[text-shadow:0_0_20px_rgba(168,85,247,0.8)] transition-all duration-300">Veda</span> 2.0?
           </span>
         </motion.div>
 
@@ -269,7 +170,7 @@ const HeroSection = () => {
           variants={itemVariants} 
           className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4"
         >
-          <span className="gradient-text">
+          <span className="bg-gradient-to-r from-yellow-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent bg-[length:200%_200%]">
             The Evolution Continues
           </span>
         </motion.h2>
@@ -294,7 +195,7 @@ const HeroSection = () => {
       >
         {/* Version Badge */}
         <motion.div 
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-400/20 border border-yellow-400/40 mb-6 version-badge"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-400/20 border border-yellow-400/40 mb-6"
           whileHover={{ 
             scale: 1.05,
           }}
@@ -309,7 +210,7 @@ const HeroSection = () => {
           className="space-y-4 text-slate-200 leading-relaxed"
         >
           <p className="text-base sm:text-lg">
-            Version 1 unleashed <span className="text-yellow-300 font-bold text-xl golden-glow">7000+</span> registrations, 
+            Version 1 unleashed <span className="text-yellow-300 font-bold text-xl [text-shadow:0_0_10px_rgba(255,193,7,0.6)] hover:[text-shadow:0_0_20px_rgba(255,193,7,0.8)] transition-all duration-300">7000+</span> registrations, 
             ignited curiosity, and brought together a diverse community of learners, coders, and creators.
           </p>
           <p className="text-base sm:text-lg">
@@ -321,8 +222,8 @@ const HeroSection = () => {
         {/* Stats Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
           {[
-            { value: "7000+", label: "Registrations", color: "golden-glow", icon: "👥" },
-            { value: "∞", label: "Possibilities", color: "purple-glow", icon: "✨" },
+            { value: "7000+", label: "Registrations", color: "[text-shadow:0_0_10px_rgba(255,193,7,0.6)] hover:[text-shadow:0_0_20px_rgba(255,193,7,0.8)] transition-all duration-300", icon: "👥" },
+            { value: "∞", label: "Possibilities", color: "[text-shadow:0_0_10px_rgba(168,85,247,0.6)] hover:[text-shadow:0_0_20px_rgba(168,85,247,0.8)] transition-all duration-300", icon: "✨" },
             { value: "1", label: "Movement", color: "text-cyan-300", icon: "🌊" }
           ].map((stat, index) => (
             <motion.div
@@ -394,13 +295,13 @@ const CodeVeda2Announcement = () => {
       {/* Content */}
       <div className="relative z-10 text-center">
         <motion.div
-          className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-yellow-400/30 to-purple-500/30 border-2 border-yellow-400/50 mb-6 version-badge"
+          className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-yellow-400/30 to-purple-500/30 border-2 border-yellow-400/50 mb-6"
           whileHover={{ 
             scale: 1.05,
           }}
         >
           <span className="text-3xl">✨</span>
-          <span className="text-yellow-300 font-bold text-2xl sm:text-3xl golden-glow">
+          <span className="text-yellow-300 font-bold text-2xl sm:text-3xl [text-shadow:0_0_10px_rgba(255,193,7,0.6)] hover:[text-shadow:0_0_20px_rgba(255,193,7,0.8)] transition-all duration-300">
             CodeVeda 2.0
           </span>
         </motion.div>
@@ -412,8 +313,8 @@ const CodeVeda2Announcement = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
           >
-            <span className="golden-glow">Larger.</span>{' '}
-            <span className="purple-glow">Deeper.</span>{' '}
+            <span className="[text-shadow:0_0_10px_rgba(255,193,7,0.6)] hover:[text-shadow:0_0_20px_rgba(255,193,7,0.8)] transition-all duration-300">Larger.</span>{' '}
+            <span className="[text-shadow:0_0_10px_rgba(168,85,247,0.6)] hover:[text-shadow:0_0_20px_rgba(168,85,247,0.8)] transition-all duration-300">Deeper.</span>{' '}
             <span className="text-cyan-300">More Cosmic.</span>
           </motion.h3>
           
@@ -531,7 +432,7 @@ const chapters = [
     content: `
       <p>In the beginning, there was knowledge. And from this knowledge emerged understanding. CodeVeda represents the convergence of ancient Vedic wisdom with modern technological innovation - a new path for those who seek to create with purpose and meaning.</p>
       <p>Like the Vedas, which are repositories of timeless knowledge organized in systematic ways, modern code organizes logic and information to solve problems of our time.</p>
-      <div class="vedic-quote">"सत्यं ज्ञानम् अनन्तं ब्रह्म" (Truth, Knowledge, Infinity)</div>
+      <div class="border-l-4 border-yellow-400 bg-yellow-400/10 text-yellow-400 transition-all duration-300 hover:bg-yellow-400/20 p-4 my-4">"सत्यं ज्ञानम् अनन्तं ब्रह्म" (Truth, Knowledge, Infinity)</div>
     `
   },
   {
@@ -541,7 +442,7 @@ const chapters = [
     content: `
       <p>The Vedas, ancient texts from the Indian subcontinent, are organized into four collections, each with its own focus and purpose. Similarly, modern software development follows foundational principles that guide its implementation.</p>
       <p>Just as rishis (sages) received and transmitted Vedic knowledge through careful contemplation and structured organization, developers create systems that organize and process knowledge for the digital age.</p>
-      <div class="vedic-quote">"यथा पिण्डे तथा ब्रह्माण्डे" (As in the microcosm, so in the macrocosm)</div>
+      <div class="border-l-4 border-yellow-400 bg-yellow-400/10 text-yellow-400 transition-all duration-300 hover:bg-yellow-400/20 p-4 my-4">"यथा पिण्डे तथा ब्रह्माण्डे" (As in the microcosm, so in the macrocosm)</div>
     `
   },
   {
@@ -571,7 +472,7 @@ const chapters = [
     english: "Integrating Wisdom & Technology",
     content: `
       <p>Why merge these seemingly disparate domains? The Vedic tradition emphasizes the interconnected nature of all existence - a principle that mirrors modern systems thinking and network theory.</p>
-      <div class="vedic-quote">"अहं ब्रह्मास्मि" (I am Brahman/The Infinite Reality)</div>
+      <div class="border-l-4 border-yellow-400 bg-yellow-400/10 text-yellow-400 transition-all duration-300 hover:bg-yellow-400/20 p-4 my-4">"अहं ब्रह्मास्मि" (I am Brahman/The Infinite Reality)</div>
       <p>This interconnectedness in Vedic philosophy parallels the web of dependencies and relationships in modern software architecture. By approaching technology with Vedic principles, we create more holistic, sustainable, and meaningful solutions.</p>
     `
   },
@@ -596,7 +497,7 @@ const chapters = [
     english: "Sustainable Technology",
     content: `
       <p>The Vedic principle of harmony with nature guides our approach to creating technology that enhances rather than depletes our world. Technology should be a force for balance, not disruption.</p>
-      <div class="vedic-quote">"वसुधैव कुटुम्बकम्" (The world is one family)</div>
+      <div class="border-l-4 border-yellow-400 bg-yellow-400/10 text-yellow-400 transition-all duration-300 hover:bg-yellow-400/20 p-4 my-4">"वसुधैव कुटुम्बकम्" (The world is one family)</div>
       <p>Through CodeVeda, we aim to develop solutions that are not only technically excellent but also ethically sound and environmentally conscious. Our code becomes a form of dharma - righteous action in the world.</p>
     `
   },
@@ -643,7 +544,7 @@ const chapters = [
     english: "The Vision Ahead",
     content: `
       <p>CodeVeda isn't just a hackathon—it's a community of thinkers and builders bridging ancient wisdom with future innovation. We invite you to join us in creating technology that reflects the depth and wisdom of our shared human heritage.</p>
-      <div class="vedic-quote">"तमसो मा ज्योतिर्गमय" (Lead us from darkness to light)</div>
+      <div class="border-l-4 border-yellow-400 bg-yellow-400/10 text-yellow-400 transition-all duration-300 hover:bg-yellow-400/20 p-4 my-4">"तमसो मा ज्योतिर्गमय" (Lead us from darkness to light)</div>
       <p>Together, we code a more mindful technological future. We blend the best of what has come before with the possibilities that lie ahead.</p>
     `
   },
@@ -655,7 +556,7 @@ const chapters = [
       <p>A Vedic yajna (ritual sacrifice) was a community gathering for transformation and blessing. CodeVeda is our modern yajna - a coming together to create technology that transforms and blesses our world.</p>
       <p>Bring your skills, your wisdom, and your creative spirit. Join us in this sacred act of creation.</p>
       <div class="join-container">
-        <button class="vedic-button" onclick="window.open('https://vision.hack2skill.com/event/codeveda2/?utm_source=google.com&utm_medium=Mohit', '_blank')">Register for CodeVeda 2.0</button>
+        <button class="px-6 py-3 bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold rounded-full shadow-lg hover:shadow-xl transition-all transform hover:scale-105" onclick="window.open('https://vision.hack2skill.com/event/codeveda2/?utm_source=google.com&utm_medium=Mohit', '_blank')">Register for CodeVeda 2.0</button>
       </div>
     `
   }
@@ -675,7 +576,6 @@ const mantras = [
 const WhyCodeVeda = () => {
   const [currentChapter, setCurrentChapter] = useState(0);
   const [search, setSearch] = useState("");
-  const [audioEnabled, setAudioEnabled] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0.5, y: 0.5 });
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -717,7 +617,7 @@ const WhyCodeVeda = () => {
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ type: "spring", stiffness: 200, damping: 20 }}
-          className="text-6xl golden-glow"
+          className="text-6xl [text-shadow:0_0_10px_rgba(255,193,7,0.6)]"
         >
           ✨
         </motion.div>
@@ -726,240 +626,268 @@ const WhyCodeVeda = () => {
   }
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-    >
-      {/* Background Animations */}
-      <BackgroundAnimations mousePos={mousePos} />
+    <div className="app-container bg-cosmic-900 text-divine-silver min-h-screen flex flex-col">
+      <Navbar />
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="min-h-screen text-white relative overflow-x-hidden bg-[linear-gradient(135deg,#140724_0%,#0f0622_50%,#1a0b2e_100%)]"
+        onMouseMove={handleMouseMove}
+      >
+        {/* Starfield Background */}
+        <div className="fixed inset-0 pointer-events-none opacity-40 animate-[pulse-glow_4s_ease-in-out_infinite]"
+             style={{
+               backgroundImage: `
+                 radial-gradient(2px 2px at 20% 30%, white, transparent),
+                 radial-gradient(2px 2px at 60% 70%, white, transparent),
+                 radial-gradient(1px 1px at 50% 50%, white, transparent),
+                 radial-gradient(1px 1px at 80% 10%, white, transparent),
+                 radial-gradient(2px 2px at 90% 60%, white, transparent),
+                 radial-gradient(1px 1px at 33% 80%, white, transparent),
+                 radial-gradient(1px 1px at 15% 90%, white, transparent),
+                 radial-gradient(2px 2px at 70% 20%, white, transparent)
+               `,
+               backgroundSize: '200% 200%'
+             }}
+        />
 
-      
-      
-      {/* Main Content Structure */}
-      <div className="relative z-10">
-        <UpdatedHeader />
-        <HeroSection />
-        
-        {/* CodeVeda 2.0 Announcement Section */}
-        <section className="relative z-10 max-w-6xl mx-auto px-4 py-8">
-          <CodeVeda2Announcement />
-        </section>
+        {/* Golden Mandala Overlay */}
+        <div className="fixed left-1/2 top-1/2 w-[650px] h-[650px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-40 pointer-events-none z-0 animate-[float_6s_infinite_ease-in-out]"
+             style={{
+               background: 'radial-gradient(circle, transparent 30%, rgba(255,193,7,.05) 55%, transparent 75%)'
+             }}
+        />
 
-        {/* Chapters Section */}
-        <motion.main 
-          className="relative z-10 max-w-6xl mx-auto px-4 pb-16 pt-8"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-        >
-          <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,2fr)] gap-6 lg:gap-8">
-            {/* Sidebar */}
-            <motion.aside 
-              className="bg-gradient-to-br from-black/60 via-purple-950/30 to-black/60 border-2 border-yellow-500/30 rounded-2xl p-5 backdrop-blur-xl max-h-[75vh] overflow-hidden flex flex-col"
-              whileHover={{ 
-                y: -2,
-              }}
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.3 }}
-            >
-              {/* Search Bar */}
-              <motion.div 
-                className="flex items-center gap-2 rounded-xl bg-slate-900/70 border-2 border-slate-600/80 px-3 py-2.5 mb-4 shadow-inner"
+        {/* Background Animations */}
+        <BackgroundAnimations mousePos={mousePos} />
+
+        {/* Main Content Structure */}
+        <div className="relative z-10">
+          <UpdatedHeader />
+          <HeroSection />
+          
+          {/* CodeVeda 2.0 Announcement Section */}
+          <section className="relative z-10 max-w-6xl mx-auto px-4 py-8">
+            <CodeVeda2Announcement />
+          </section>
+
+          {/* Chapters Section */}
+          <motion.main 
+            className="relative z-10 max-w-6xl mx-auto px-4 pb-16 pt-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,2fr)] gap-6 lg:gap-8">
+              {/* Sidebar */}
+              <motion.aside 
+                className="bg-gradient-to-br from-black/60 via-purple-950/30 to-black/60 border-2 border-yellow-500/30 rounded-2xl p-5 backdrop-blur-xl max-h-[75vh] overflow-hidden flex flex-col"
+                whileHover={{ 
+                  y: -2,
+                }}
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.3 }}
               >
-                <FiSearch className="w-5 h-5 text-yellow-300" />
-                <input
-                  type="text"
-                  placeholder="Search chapters..."
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                  className="w-full bg-transparent text-sm outline-none text-slate-100 placeholder:text-slate-400"
-                />
-              </motion.div>
+                {/* Search Bar */}
+                <motion.div 
+                  className="flex items-center gap-2 rounded-xl bg-slate-900/70 border-2 border-slate-600/80 px-3 py-2.5 mb-4 shadow-inner"
+                >
+                  <FiSearch className="w-5 h-5 text-yellow-300" />
+                  <input
+                    type="text"
+                    placeholder="Search chapters..."
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                    className="w-full bg-transparent text-sm outline-none text-slate-100 placeholder:text-slate-400"
+                  />
+                </motion.div>
 
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-xs uppercase tracking-wide text-slate-300/80">
-                  अध्याय अनुक्रमणिका • Chapters
-                </span>
-                <span className="text-xs px-3 py-1 rounded-full bg-yellow-300/10 text-yellow-200 border border-yellow-300/30">
-                  {currentChapter + 1} / {chapters.length}
-                </span>
-              </div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-xs uppercase tracking-wide text-slate-300/80">
+                    अध्याय अनुक्रमणिका • Chapters
+                  </span>
+                  <span className="text-xs px-3 py-1 rounded-full bg-yellow-300/10 text-yellow-200 border border-yellow-300/30">
+                    {currentChapter + 1} / {chapters.length}
+                  </span>
+                </div>
 
-              {/* Chapter List */}
-              <div className="overflow-y-auto pr-2 space-y-2 custom-scroll">
-                {filteredChapters.map((ch, idx) => {
-                  const realIndex = chapters.indexOf(ch);
-                  const isActive = realIndex === currentChapter;
-                  return (
-                    <motion.button
-                      key={ch.title + realIndex}
-                      onClick={() => setCurrentChapter(realIndex)}
-                      className={`w-full text-left rounded-xl px-3 py-3 transition-all duration-200 ${
-                        isActive
-                          ? "bg-gradient-to-r from-yellow-400/25 via-yellow-300/15 to-purple-500/20 border-2 border-yellow-300/50 shadow-lg"
-                          : "bg-slate-900/40 border-2 border-slate-700/50 hover:border-yellow-200/40 hover:bg-slate-900/70"
-                      }`}
-                      whileHover={{ 
-                        scale: 1.02,
-                      }}
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: idx * 0.03 }}
-                    >
-                      <div className="flex items-center gap-3">
-                        <span
-                          className={`flex h-8 w-8 items-center justify-center rounded-full text-xs font-semibold ${
-                            isActive
-                              ? "bg-yellow-300 text-slate-900"
-                              : "bg-slate-800 text-slate-200"
-                          }`}
-                        >
-                          {realIndex + 1}
-                        </span>
-                        <div className="min-w-0">
-                          <div
-                            className={`text-sm font-semibold truncate ${
-                              isActive ? "text-yellow-100 golden-glow" : "text-slate-100"
+                {/* Chapter List */}
+                <div className="overflow-y-auto pr-2 space-y-2 [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gradient-to-b [&::-webkit-scrollbar-thumb]:from-yellow-400 [&::-webkit-scrollbar-thumb]:to-purple-500">
+                  {filteredChapters.map((ch, idx) => {
+                    const realIndex = chapters.indexOf(ch);
+                    const isActive = realIndex === currentChapter;
+                    return (
+                      <motion.button
+                        key={ch.title + realIndex}
+                        onClick={() => setCurrentChapter(realIndex)}
+                        className={`w-full text-left rounded-xl px-3 py-3 transition-all duration-200 ${
+                          isActive
+                            ? "bg-gradient-to-r from-yellow-400/25 via-yellow-300/15 to-purple-500/20 border-2 border-yellow-300/50 shadow-lg"
+                            : "bg-slate-900/40 border-2 border-slate-700/50 hover:border-yellow-200/40 hover:bg-slate-900/70"
+                        }`}
+                        whileHover={{ 
+                          scale: 1.02,
+                        }}
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: idx * 0.03 }}
+                      >
+                        <div className="flex items-center gap-3">
+                          <span
+                            className={`flex h-8 w-8 items-center justify-center rounded-full text-xs font-semibold ${
+                              isActive
+                                ? "bg-yellow-300 text-slate-900"
+                                : "bg-slate-800 text-slate-200"
                             }`}
                           >
-                            {ch.title}
+                            {realIndex + 1}
+                          </span>
+                          <div className="min-w-0">
+                            <div
+                              className={`text-sm font-semibold truncate ${
+                                isActive ? "text-yellow-100 [text-shadow:0_0_10px_rgba(255,193,7,0.6)]" : "text-slate-100"
+                              }`}
+                            >
+                              {ch.title}
+                            </div>
+                            <div className="text-xs text-slate-300 truncate">{ch.english}</div>
                           </div>
-                          <div className="text-xs text-slate-300 truncate">{ch.english}</div>
                         </div>
-                      </div>
-                    </motion.button>
-                  );
-                })}
-
-                {filteredChapters.length === 0 && (
-                  <div className="text-sm text-slate-300/80 mt-6 italic text-center p-4 border border-slate-700/50 rounded-lg">
-                    No chapter matching <span className="text-yellow-200 font-semibold">"{search}"</span>.
-                  </div>
-                )}
-              </div>
-            </motion.aside>
-
-            {/* Main Content */}
-            <motion.section 
-              className="relative bg-gradient-to-br from-black/70 via-purple-950/40 to-black/70 rounded-3xl border-2 border-yellow-500/40 backdrop-blur-2xl shadow-2xl overflow-hidden min-h-[60vh] flex flex-col"
-              whileHover={{ 
-                y: -2,
-              }}
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.4 }}
-            >
-              <div className="relative z-10 px-6 sm:px-8 md:px-10 pt-7 pb-6 flex-1 flex flex-col">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={current.title}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.3 }}
-                    className="flex-1 flex flex-col"
-                  >
-                    {/* Chapter Header */}
-                    <div className="mb-5">
-                      <div className="text-sm sm:text-base text-yellow-200 font-semibold tracking-wide mb-1 sanskrit">
-                        {current.sanskrit}
-                      </div>
-                      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-50 mb-2">
-                        {current.title}
-                      </h2>
-                      <p className="mt-1 text-sm sm:text-base text-indigo-200/90 italic">
-                        {current.english}
-                      </p>
-                    </div>
-
-                    {/* Content Area */}
-                    <div className="flex-1 overflow-y-auto pr-2 custom-scroll">
-                      <div
-                        className="text-sm sm:text-base leading-relaxed text-slate-100/90"
-                        dangerouslySetInnerHTML={{ __html: current.content }}
-                      />
-                    </div>
-                  </motion.div>
-                </AnimatePresence>
-
-                {/* Navigation and Mantra */}
-                <div className="mt-5 space-y-4">
-                  {/* Navigation Buttons */}
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                    <div className="flex items-center gap-2 text-slate-300/90 text-sm">
-                      <HiSparkles className="w-5 h-5 text-yellow-300" />
-                      <span>
-                        Chapter{" "}
-                        <span className="text-yellow-200 font-semibold">{currentChapter + 1}</span> of{" "}
-                        <span className="text-yellow-200 font-semibold">{chapters.length}</span>
-                      </span>
-                    </div>
-
-                    <div className="flex gap-2 justify-end">
-                      <motion.button
-                        onClick={() => setCurrentChapter((prev) => (prev > 0 ? prev - 1 : prev))}
-                        disabled={currentChapter === 0}
-                        className={`px-4 py-2 rounded-full border-2 text-sm transition ${
-                          currentChapter === 0
-                            ? "border-slate-600 text-slate-500 cursor-not-allowed"
-                            : "border-slate-500 text-slate-100 hover:border-yellow-300 hover:text-yellow-200"
-                        } bg-slate-900/60`}
-                        whileHover={currentChapter !== 0 ? { 
-                          scale: 1.05,
-                        } : {}}
-                      >
-                        ← Previous
                       </motion.button>
-                      <motion.button
-                        onClick={() =>
-                          setCurrentChapter((prev) =>
-                            prev < chapters.length - 1 ? prev + 1 : prev
-                          )
-                        }
-                        disabled={currentChapter === chapters.length - 1}
-                        className={`px-4 py-2 rounded-full text-sm bg-gradient-to-r from-yellow-400 via-amber-300 to-orange-400 text-slate-900 font-semibold shadow-lg transition ${
-                          currentChapter === chapters.length - 1
-                            ? "opacity-60 cursor-not-allowed"
-                            : ""
-                        }`}
-                        whileHover={currentChapter !== chapters.length - 1 ? { 
-                          scale: 1.05,
-                        } : {}}
-                      >
-                        <span className="flex items-center gap-1">
-                          Next 
-                          <span>→</span>
+                    );
+                  })}
+
+                  {filteredChapters.length === 0 && (
+                    <div className="text-sm text-slate-300/80 mt-6 italic text-center p-4 border border-slate-700/50 rounded-lg">
+                      No chapter matching <span className="text-yellow-200 font-semibold">"{search}"</span>.
+                    </div>
+                  )}
+                </div>
+              </motion.aside>
+
+              {/* Main Content */}
+              <motion.section 
+                className="relative bg-gradient-to-br from-black/70 via-purple-950/40 to-black/70 rounded-3xl border-2 border-yellow-500/40 backdrop-blur-2xl shadow-2xl overflow-hidden min-h-[60vh] flex flex-col"
+                whileHover={{ 
+                  y: -2,
+                }}
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.4 }}
+              >
+                <div className="relative z-10 px-6 sm:px-8 md:px-10 pt-7 pb-6 flex-1 flex flex-col">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={current.title}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.3 }}
+                      className="flex-1 flex flex-col"
+                    >
+                      {/* Chapter Header */}
+                      <div className="mb-5">
+                        <div className="text-sm sm:text-base text-yellow-200 font-semibold tracking-wide mb-1 sanskrit">
+                          {current.sanskrit}
+                        </div>
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-50 mb-2">
+                          {current.title}
+                        </h2>
+                        <p className="mt-1 text-sm sm:text-base text-indigo-200/90 italic">
+                          {current.english}
+                        </p>
+                      </div>
+
+                      {/* Content Area */}
+                      <div className="flex-1 overflow-y-auto pr-2 [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gradient-to-b [&::-webkit-scrollbar-thumb]:from-yellow-400 [&::-webkit-scrollbar-thumb]:to-purple-500">
+                        <div
+                          className="text-sm sm:text-base leading-relaxed text-slate-100/90"
+                          dangerouslySetInnerHTML={{ __html: current.content }}
+                        />
+                      </div>
+                    </motion.div>
+                  </AnimatePresence>
+
+                  {/* Navigation and Mantra */}
+                  <div className="mt-5 space-y-4">
+                    {/* Navigation Buttons */}
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                      <div className="flex items-center gap-2 text-slate-300/90 text-sm">
+                        <HiSparkles className="w-5 h-5 text-yellow-300" />
+                        <span>
+                          Chapter{" "}
+                          <span className="text-yellow-200 font-semibold">{currentChapter + 1}</span> of{" "}
+                          <span className="text-yellow-200 font-semibold">{chapters.length}</span>
                         </span>
-                      </motion.button>
-                    </div>
-                  </div>
+                      </div>
 
-                  {/* Mantra Display */}
-                  <div className="text-center">
-                    <AnimatePresence mode="wait">
-                      <motion.div
-                        key={mantraForChapter}
-                        initial={{ opacity: 0, y: 5 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -5 }}
-                        transition={{ duration: 0.3 }}
-                        className="inline-flex items-center px-5 py-2.5 rounded-full bg-yellow-300/10 border-2 border-yellow-300/40 text-sm text-yellow-100 shadow-lg backdrop-blur-sm"
-                      >
-                        <span className="mr-2 text-yellow-200/90 text-base">✦</span>
-                        <span className="font-semibold mr-2 sanskrit">{mantraForChapter}</span>
-                        <span className="text-xs text-slate-200/80">• guiding mantra</span>
-                      </motion.div>
-                    </AnimatePresence>
+                      <div className="flex gap-2 justify-end">
+                        <motion.button
+                          onClick={() => setCurrentChapter((prev) => (prev > 0 ? prev - 1 : prev))}
+                          disabled={currentChapter === 0}
+                          className={`px-4 py-2 rounded-full border-2 text-sm transition ${
+                            currentChapter === 0
+                              ? "border-slate-600 text-slate-500 cursor-not-allowed"
+                              : "border-slate-500 text-slate-100 hover:border-yellow-300 hover:text-yellow-200"
+                          } bg-slate-900/60`}
+                          whileHover={currentChapter !== 0 ? { 
+                            scale: 1.05,
+                          } : {}}
+                        >
+                          ← Previous
+                        </motion.button>
+                        <motion.button
+                          onClick={() =>
+                            setCurrentChapter((prev) =>
+                              prev < chapters.length - 1 ? prev + 1 : prev
+                            )
+                          }
+                          disabled={currentChapter === chapters.length - 1}
+                          className={`px-4 py-2 rounded-full text-sm bg-gradient-to-r from-yellow-400 via-amber-300 to-orange-400 text-slate-900 font-semibold shadow-lg transition ${
+                            currentChapter === chapters.length - 1
+                              ? "opacity-60 cursor-not-allowed"
+                              : ""
+                          }`}
+                          whileHover={currentChapter !== chapters.length - 1 ? { 
+                            scale: 1.05,
+                          } : {}}
+                        >
+                          <span className="flex items-center gap-1">
+                            Next 
+                            <span>→</span>
+                          </span>
+                        </motion.button>
+                      </div>
+                    </div>
+
+                    {/* Mantra Display */}
+                    <div className="text-center">
+                      <AnimatePresence mode="wait">
+                        <motion.div
+                          key={mantraForChapter}
+                          initial={{ opacity: 0, y: 5 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -5 }}
+                          transition={{ duration: 0.3 }}
+                          className="inline-flex items-center px-5 py-2.5 rounded-full bg-yellow-300/10 border-2 border-yellow-300/40 text-sm text-yellow-100 shadow-lg backdrop-blur-sm"
+                        >
+                          <span className="mr-2 text-yellow-200/90 text-base">✦</span>
+                          <span className="font-semibold mr-2 sanskrit">{mantraForChapter}</span>
+                          <span className="text-xs text-slate-200/80">• guiding mantra</span>
+                        </motion.div>
+                      </AnimatePresence>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </motion.section>
-          </div>
-        </motion.main>
-      </div>
-    </motion.div>
+              </motion.section>
+            </div>
+          </motion.main>
+        </div>
+      </motion.div>
+      <Footer />
+    </div>
   );
 };
 

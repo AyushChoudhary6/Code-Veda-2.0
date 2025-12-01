@@ -1,6 +1,6 @@
 import React from 'react';
-import HackathonSchedule from "./HackathonSchedule";
-import Shuffle from "./Shuffle";
+import HackathonSchedule from "../components/HackathonSchedule";
+import Shuffle from "../components/Shuffle";
 
 const ScheduleSection = () => {
   return (

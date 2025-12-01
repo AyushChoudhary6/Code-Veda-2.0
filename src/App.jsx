@@ -4,9 +4,9 @@ import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import BelowHeroInfo from './components/BelowHeroInfo'
 import About from './components/About'
-import ScheduleSection from './components/ScheduleSection'
 import Footer from './components/Footer'
-import WhyCodeVeda from './pages/whycodeveda'
+import WhyCodeVeda from './pages/WhyCodeVeda'
+import SchedulePage from './pages/SchedulePage'
 
 const HomePage = () => (
   <div className="app-container bg-cosmic-900 text-divine-silver">
@@ -14,7 +14,6 @@ const HomePage = () => (
     <Hero />
     <BelowHeroInfo />
     <About />
-    <ScheduleSection />
     <Footer />
   </div>
 )
@@ -25,6 +24,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/why-code-veda" element={<WhyCodeVeda />} />
+        <Route path="/schedule" element={<SchedulePage />} />
       </Routes>
     </Router>
   )

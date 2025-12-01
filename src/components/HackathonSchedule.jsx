@@ -101,14 +101,14 @@ const HackathonSchedule = () => {
         {/* Animated Timeline Line */}
         <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 overflow-hidden">
           <motion.div
-            className="w-full h-full mt-50 bg-linear-to-b from-blue-500 via-purple-500 to-pink-500"
+            className="w-full h-full mt-48 bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500"
             style={{
               scaleY: smoothProgress,
               transformOrigin: 'top',
               opacity: useTransform(smoothProgress, [0, 0.1, 0.9, 1], [0.3, 1, 1, 0.3])
             }}
           />
-          <div className="absolute inset-0 bg-linear-to-b from-gray-800 via-gray-800 to-gray-800" 
+          <div className="absolute inset-0 bg-gradient-to-b from-gray-800 via-gray-800 to-gray-800" 
                style={{ zIndex: -1 }} />
         </div>
 
@@ -187,7 +187,7 @@ const PhaseCard = ({ phase, index, scrollProgress }) => {
         initial={{ scale: 0 }}
         animate={isInView ? { scale: 1 } : {}}
         transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
-        className="absolute left-8 md:left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-linear-to-br from-blue-500 to-purple-600 border-4 border-black shadow-lg shadow-blue-500/50 z-10"
+        className="absolute left-8 md:left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 border-4 border-black shadow-lg shadow-blue-500/50 z-10"
       >
         <motion.div
           animate={{
@@ -212,9 +212,9 @@ const PhaseCard = ({ phase, index, scrollProgress }) => {
         transition={{ type: "spring", stiffness: 300 }}
         className="w-full md:w-1/2 ml-16 md:ml-0"
       >
-        <div className="bg-linear-to-br from-gray-900 via-gray-800 to-gray-900 rounded-2xl border border-gray-700 overflow-hidden shadow-2xl hover:shadow-blue-500/20 transition-shadow">
+        <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-2xl border border-gray-700 overflow-hidden shadow-2xl hover:shadow-blue-500/20 transition-shadow">
           {/* Date Header */}
-          <div className="bg-linear-to-r from-teal-500 to-indigo-900 px-6 py-3">
+          <div className="bg-gradient-to-r from-teal-500 to-indigo-900 px-6 py-3">
             <div className="flex items-center gap-2 text-sm">
               <span className="text-2xl">{phase.icon}</span>
               <span className="font-medium">{phase.date}</span>
@@ -227,7 +227,7 @@ const PhaseCard = ({ phase, index, scrollProgress }) => {
               <span className="text-lg">🏢</span>
               <span className="text-sm">{phase.organization}</span>
             </div>
-            <h3 className="text-3xl font-bold pb-4 bg-linear-to-r from-sky-400 to-blue-700 bg-clip-text text-transparent">
+            <h3 className="text-3xl font-bold pb-4 bg-gradient-to-r from-sky-400 to-blue-700 bg-clip-text text-transparent">
               {phase.title}
             </h3>
             <p className="text-gray-400 mb-4">{phase.description1}</p>
