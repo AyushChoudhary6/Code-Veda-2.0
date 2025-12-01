@@ -66,31 +66,37 @@ const HackathonSchedule = () => {
   ];
 
   return (
-    <div>      
+    <div className="relative z-10">      
 
-      {/* Filter Tabs */}
-      <div className="w-full pb-8 overflow-hidden">
-        <div className="flex gap-10 animate-scroll-lr whitespace-nowrap w-max">
+      {/* Runic Filter Tabs */}
+      <div className="w-full pb-12 overflow-hidden">
+        <div className="flex gap-8 animate-scroll-lr whitespace-nowrap w-max py-4">
           {/* FIRST ROW */}
           {['CODE VEDA 2.0', 'GEEK ROOM', 'ADGIPS', 'GEEK ROOM', 'CODE VEDA 2.0', 'ADGIPS', 'CODE VEDA 2.0', 'GEEK ROOM', 'CODE VEDA 2.0', 'WIN', 'ADGIPS', 'CODE VEDA 2.0', 'GEEK ROOM', 'CODE VEDA 2.0'].map((tab, i) => (
-            <motion.button
+            <motion.div
               key={tab + "1"}
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: i * 0.1 }}
-              className="px-6 py-2 rounded-full text-sm bg-gray-800/50 text-gray-400 hover:bg-gray-700"
+              className="relative group cursor-pointer"
             >
-              {tab}
-            </motion.button>
+              <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 to-purple-500/20 blur-md rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="relative px-6 py-2 bg-black/40 backdrop-blur-md border border-yellow-500/30 text-yellow-100/80 font-mono text-sm tracking-widest uppercase clip-path-rune hover:border-yellow-400/60 hover:text-yellow-300 transition-all duration-300">
+                {tab}
+              </div>
+            </motion.div>
           ))}
           {/* DUPLICATED ROW */}
-          {['CODE VEDA 2.0', 'GEEK ROOM', 'CODE VEDA 2.0', 'BUILD', 'CODE VEDA 2.0', 'GEEK ROOM', 'CODE VEDA 2.0', 'ADGIPS', 'CODE VEDA 2.0', 'GEEK ROOM', 'ADGIPS', 'CODE VEDA 2.0', 'GEEK ROOM', 'ADGIPS'].map((tab) => (
-            <motion.button
-              key={tab + "2"}
-              className="px-6 py-2 rounded-full text-sm bg-gray-800/50 text-gray-400"
+          {['CODE VEDA 2.0', 'GEEK ROOM', 'CODE VEDA 2.0', 'BUILD', 'CODE VEDA 2.0', 'GEEK ROOM', 'CODE VEDA 2.0', 'ADGIPS', 'CODE VEDA 2.0', 'GEEK ROOM', 'ADGIPS', 'CODE VEDA 2.0', 'GEEK ROOM', 'ADGIPS'].map((tab, i) => (
+            <motion.div
+              key={tab + "2" + i}
+              className="relative group cursor-pointer"
             >
-              {tab}
-            </motion.button>
+              <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 to-purple-500/20 blur-md rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="relative px-6 py-2 bg-black/40 backdrop-blur-md border border-yellow-500/30 text-yellow-100/80 font-mono text-sm tracking-widest uppercase clip-path-rune hover:border-yellow-400/60 hover:text-yellow-300 transition-all duration-300">
+                {tab}
+              </div>
+            </motion.div>
           ))}
         </div>
       </div>
@@ -98,60 +104,38 @@ const HackathonSchedule = () => {
 
       {/* Timeline Container */}
       <div ref={containerRef} className="relative max-w-7xl mx-auto px-6 pb-20">
-        {/* Animated Timeline Line */}
-        <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 overflow-hidden">
+        {/* Constellation Timeline Line */}
+        <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5">
+          {/* Background Line (Dashed) */}
+          <div className="absolute inset-0 border-l-2 border-dashed border-purple-500/20" />
+          
+          {/* Active Line (Glowing Beam) */}
           <motion.div
-            className="w-full h-full mt-48 bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500"
+            className="absolute top-0 left-[-1px] w-[3px] bg-gradient-to-b from-yellow-400 via-purple-500 to-cyan-400 shadow-[0_0_15px_rgba(168,85,247,0.6)]"
             style={{
+              height: "100%",
               scaleY: smoothProgress,
               transformOrigin: 'top',
-              opacity: useTransform(smoothProgress, [0, 0.1, 0.9, 1], [0.3, 1, 1, 0.3])
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-gray-800 via-gray-800 to-gray-800" 
-               style={{ zIndex: -1 }} />
         </div>
 
         {/* Phase Cards */}
-        <div className="relative space-y-24">
+        <div className="relative space-y-32">
           {phases.map((phase, index) => (
             <PhaseCard 
               key={phase.id} 
               phase={phase} 
               index={index}
-              scrollProgress={smoothProgress}
             />
           ))}
         </div>
-      </div>
-
-      {/* Floating Particles */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        {[...Array(30)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-blue-400/30 rounded-full"
-            initial={{
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
-            }}
-            animate={{
-              y: [null, Math.random() * window.innerHeight],
-              opacity: [0, 1, 0],
-            }}
-            transition={{
-              duration: Math.random() * 10 + 10,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-          />
-        ))}
       </div>
     </div>
   );
 };
 
-const PhaseCard = ({ phase, index, scrollProgress }) => {
+const PhaseCard = ({ phase, index }) => {
   const cardRef = useRef(null);
   const [isInView, setIsInView] = useState(false);
 
@@ -162,7 +146,7 @@ const PhaseCard = ({ phase, index, scrollProgress }) => {
           setIsInView(true);
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.2 }
     );
 
     if (cardRef.current) {
@@ -177,83 +161,95 @@ const PhaseCard = ({ phase, index, scrollProgress }) => {
   return (
     <motion.div
       ref={cardRef}
-      initial={{ opacity: 0, x: isLeft ? -100 : 100 }}
-      animate={isInView ? { opacity: 1, x: 0 } : {}}
-      transition={{ duration: 0.8, ease: "easeOut" }}
+      initial={{ opacity: 0, y: 50, filter: "blur(10px)" }}
+      animate={isInView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
+      transition={{ duration: 0.8, type: "spring", bounce: 0.3 }}
       className={`relative flex ${isLeft ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-8`}
     >
-      {/* Timeline Node */}
+      {/* Planetary Node */}
       <motion.div
         initial={{ scale: 0 }}
         animate={isInView ? { scale: 1 } : {}}
-        transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
-        className="absolute left-8 md:left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 border-4 border-black shadow-lg shadow-blue-500/50 z-10"
+        transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+        className="absolute left-8 md:left-1/2 -translate-x-1/2 z-10"
       >
-        <motion.div
-          animate={{
-            scale: [1, 1.3, 1],
-            opacity: [0.5, 0, 0.5],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute inset-0 rounded-full bg-blue-400"
-        />
+        <div className="relative w-8 h-8">
+          <motion.div 
+            className="absolute inset-0 rounded-full bg-gradient-to-r from-yellow-400 to-purple-600 blur-md"
+            animate={{ scale: [1, 1.5, 1], opacity: [0.5, 0.8, 0.5] }}
+            transition={{ duration: 3, repeat: Infinity }}
+          />
+          <div className="absolute inset-1 rounded-full bg-black border-2 border-yellow-400 shadow-[0_0_10px_rgba(255,215,0,0.5)]" />
+          <div className="absolute inset-[6px] rounded-full bg-yellow-200" />
+        </div>
       </motion.div>
 
       {/* Spacer */}
       <div className="hidden md:block w-1/2" />
 
-      {/* Content Card */}
+      {/* Holographic Content Card */}
       <motion.div
-        // find
-        transition={{ type: "spring", stiffness: 300 }}
-        className="w-full md:w-1/2 ml-16 md:ml-0"
+        className="w-full md:w-1/2 ml-16 md:ml-0 group"
+        whileHover={{ y: -5, scale: 1.01 }}
       >
-        <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-2xl border border-gray-700 overflow-hidden shadow-2xl hover:shadow-blue-500/20 transition-shadow">
+        <div className="relative bg-black/40 backdrop-blur-xl rounded-2xl border border-white/10 overflow-hidden transition-all duration-500 group-hover:border-yellow-500/30 group-hover:shadow-[0_0_30px_rgba(168,85,247,0.15)]">
+          
+          {/* Cosmic Glow Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-transparent to-yellow-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
           {/* Date Header */}
-          <div className="bg-gradient-to-r from-teal-500 to-indigo-900 px-6 py-3">
-            <div className="flex items-center gap-2 text-sm">
-              <span className="text-2xl">{phase.icon}</span>
-              <span className="font-medium">{phase.date}</span>
+          <div className="relative bg-white/5 border-b border-white/5 px-6 py-4 flex justify-between items-center">
+            <div className="flex items-center gap-3">
+              <span className="text-2xl filter drop-shadow-[0_0_5px_rgba(255,255,255,0.5)]">{phase.icon}</span>
+              <span className="font-mono text-yellow-100/90 text-sm tracking-wide">{phase.date}</span>
+            </div>
+            <div className="px-3 py-1 rounded-full bg-purple-500/20 border border-purple-500/30 text-xs text-purple-200">
+              {phase.organization}
             </div>
           </div>
 
           {/* Card Content */}
-          <div className="p-6">
-            <div className="flex items-center gap-2 text-blue-400 mb-3">
-              <span className="text-lg">🏢</span>
-              <span className="text-sm">{phase.organization}</span>
-            </div>
-            <h3 className="text-3xl font-bold pb-4 bg-gradient-to-r from-sky-400 to-blue-700 bg-clip-text text-transparent">
+          <div className="relative p-6 sm:p-8">
+            <h3 className="text-2xl sm:text-3xl font-bold mb-4 bg-gradient-to-r from-yellow-200 via-purple-200 to-cyan-200 bg-clip-text text-transparent">
               {phase.title}
             </h3>
-            <p className="text-gray-400 mb-4">{phase.description1}</p>
-            <p className="text-gray-400 mb-4">{phase.description2}</p>
-            <p className="text-gray-400 mb-4">{phase.description3}</p>
-
+            
+            <div className="space-y-3 mb-6 text-slate-300/80 text-sm sm:text-base leading-relaxed">
+              <p className="flex items-start gap-2">
+                <span className="text-yellow-500 mt-1">›</span>
+                {phase.description1}
+              </p>
+              <p className="flex items-start gap-2">
+                <span className="text-yellow-500 mt-1">›</span>
+                {phase.description2}
+              </p>
+              <p className="flex items-start gap-2">
+                <span className="text-yellow-500 mt-1">›</span>
+                {phase.description3}
+              </p>
+            </div>
 
             {/* Tags */}
-            <div className="flex gap-2 mb-4">
+            <div className="flex flex-wrap gap-2 mb-6">
               {phase.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-xs border border-blue-500/30"
+                  className="px-3 py-1 bg-white/5 text-cyan-200/80 rounded-md text-xs border border-white/10 font-mono hover:bg-cyan-500/10 hover:border-cyan-500/30 transition-colors"
                 >
-                  {tag}
+                  #{tag}
                 </span>
               ))}
             </div>
 
-            {/* Achievement */}
-            <div className="pt-4 border-t border-gray-700">
-              <div className="flex items-center gap-2">
-                <span className="text-yellow-400">🏆</span>
-                <span className="text-sm font-medium text-gray-300">Achievement:</span>
+            {/* Achievement Footer */}
+            <div className="pt-4 border-t border-white/10 flex items-center gap-3">
+              <div className="w-8 h-8 rounded-full bg-yellow-500/10 flex items-center justify-center border border-yellow-500/20">
+                <span className="text-yellow-400 text-sm">🏆</span>
               </div>
-              <p className="text-sm text-gray-400 mt-1">{phase.achievement}</p>
+              <div>
+                <div className="text-xs text-slate-400 uppercase tracking-wider">Milestone</div>
+                <div className="text-sm text-yellow-100/90 font-medium">{phase.achievement}</div>
+              </div>
             </div>
           </div>
         </div>

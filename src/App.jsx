@@ -5,8 +5,9 @@ import Hero from './components/Hero'
 import BelowHeroInfo from './components/BelowHeroInfo'
 import About from './components/About'
 import Footer from './components/Footer'
-import WhyCodeVeda from './pages/WhyCodeVeda'
+import WhyCodeVeda from './pages/whycodeveda'
 import SchedulePage from './pages/SchedulePage'
+import SponsorPage from './pages/sponsor'
 
 const HomePage = () => (
   <div className="app-container bg-cosmic-900 text-divine-silver">
@@ -25,6 +26,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/why-code-veda" element={<WhyCodeVeda />} />
         <Route path="/schedule" element={<SchedulePage />} />
+        <Route path="/sponsors" element={<SponsorPage />} />
       </Routes>
     </Router>
   )

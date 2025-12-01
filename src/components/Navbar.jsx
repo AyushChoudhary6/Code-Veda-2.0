@@ -12,6 +12,8 @@ const Navbar = () => {
       navigate('/why-code-veda')
     } else if (id === 'schedule') {
       navigate('/schedule')
+    } else if (id === 'sponsors') {
+      navigate('/sponsors')
     } else {
       // If we are on a different page and try to scroll to a home section, go home first
       navigate('/')
