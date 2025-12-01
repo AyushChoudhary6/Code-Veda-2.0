@@ -130,13 +130,13 @@ const Header = () => {
   return (
     <div className="min-h-screen bg-cosmic-900 text-white">
       {/* Hero Section - Like Second Image */}
-      <div className="relative min-h-screen flex items-center justify-between px-16 py-20">
+      <div className="relative min-h-screen flex flex-col md:flex-row items-center justify-between px-4 md:px-16 py-12 md:py-20 gap-8">
         {/* Left Side - Text Content */}
-        <div className="flex-1 z-10">
-          <h1 className="text-8xl font-bold mb-8 leading-tight">Our Team</h1>
-          <div className="w-24 h-1 bg-yellow-500 mb-8"></div>
+        <div className="flex-1 z-10 text-center md:text-left">
+          <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold mb-6 md:mb-8 leading-tight">Our Team</h1>
+          <div className="w-24 h-1 bg-yellow-500 mb-6 md:mb-8 mx-auto md:mx-0"></div>
           
-          <div className="space-y-4 text-xl">
+          <div className="space-y-3 md:space-y-4 text-base md:text-xl">
             <p className="flex items-center gap-3">
               <span className="text-yellow-500 text-2xl">🔱</span>
               <span className="text-yellow-500 font-bold">Code Veda Hackathon</span>
@@ -149,10 +149,10 @@ const Header = () => {
         </div>
 
         {/* Right Side - Guru Image with Speech Bubble */}
-        <div className="flex-1 relative flex justify-end items-center z-10">
+        <div className="flex-1 relative flex justify-center md:justify-end items-center z-10">
           <div className="relative">
-            {/* Speech Bubble */}
-            <div className="absolute -top-20 -left-80 bg-white text-black rounded-3xl p-6 shadow-2xl max-w-sm">
+            {/* Speech Bubble - Hidden on mobile */}
+            <div className="hidden md:block absolute -top-20 -left-80 bg-white text-black rounded-3xl p-6 shadow-2xl max-w-sm">
               <p className="text-lg font-semibold">
                 "Code Veda bridges ancient wisdom with modern technology..."
               </p>
@@ -164,7 +164,7 @@ const Header = () => {
             <img
               src={meditationImg}
               alt="Guru"
-              className="w-[500px] h-auto rounded-2xl shadow-2xl relative z-20"
+              className="w-[280px] md:w-[400px] lg:w-[500px] h-auto rounded-2xl shadow-2xl relative z-20"
             />
             
             {/* Glow Effect */}
@@ -173,7 +173,7 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Ancient Book Style Team Member Cards */}
+      {/* Ancient Book Style Team Member Cards - Desktop / Card Grid - Mobile */}
       <div className="min-h-screen flex items-center justify-center px-8 py-20 relative">
         {/* Background decorative elements */}
         <div className="absolute inset-0 opacity-10">
@@ -184,12 +184,12 @@ const Header = () => {
         </div>
 
         <div className="relative max-w-6xl w-full">
-          <h2 className="text-5xl font-bold text-center mb-16 text-yellow-500 font-serif">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-8 md:mb-16 text-yellow-500 font-serif">
             पत्रिका (The Sacred Records)
           </h2>
           
-          {/* Book Container */}
-          <div className="relative perspective-1000">
+          {/* Desktop Book View - Hidden on Mobile */}
+          <div className="hidden md:block relative perspective-1000">
             <div className="relative bg-gradient-to-br from-amber-950/60 via-amber-900/60 to-amber-950/60 rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.8)] p-8 border-4 border-yellow-600/40 backdrop-blur-sm">
               {/* Subtle Golden Border Glow */}
               <div className="absolute inset-0 rounded-3xl shadow-[0_0_20px_rgba(234,179,8,0.3)]"></div>
@@ -340,6 +340,71 @@ const Header = () => {
                 />
               ))}
             </div>
+          </div>
+
+          {/* Mobile Card Grid - Hidden on Desktop */}
+          <div className="md:hidden grid grid-cols-1 gap-6 px-4">
+            {teamMembers.map((member, index) => (
+              <div 
+                key={index}
+                className="bg-gradient-to-br from-amber-950/80 via-amber-900/70 to-amber-950/80 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.6)] overflow-hidden border-2 border-yellow-600/30 backdrop-blur-sm"
+              >
+                {/* Card Header with Om Symbol */}
+                <div className="bg-gradient-to-b from-amber-900/40 to-transparent p-3 text-center border-b border-yellow-600/20">
+                  <span className="text-2xl text-yellow-600/70">🕉</span>
+                </div>
+
+                {/* Card Content */}
+                <div className="p-6 space-y-4">
+                  {/* Member Image */}
+                  <div className="relative mx-auto w-48 h-48">
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover rounded-lg shadow-xl border-3 border-yellow-600/40"
+                    />
+                    {/* Decorative Corners */}
+                    <div className="absolute -top-2 -left-2 text-xl text-yellow-600/60">❀</div>
+                    <div className="absolute -top-2 -right-2 text-xl text-yellow-600/60">❀</div>
+                    <div className="absolute -bottom-2 -left-2 text-xl text-yellow-600/60">❀</div>
+                    <div className="absolute -bottom-2 -right-2 text-xl text-yellow-600/60">❀</div>
+                  </div>
+
+                  {/* Member Details */}
+                  <div className="text-center space-y-3">
+                    <h3 className="text-2xl font-bold text-yellow-500 font-serif">
+                      {member.name}
+                    </h3>
+                    
+                    <div className="flex items-center justify-center gap-2">
+                      <div className="w-12 h-0.5 bg-yellow-600"></div>
+                      <span className="text-yellow-600 text-sm">॰॰॰</span>
+                      <div className="w-12 h-0.5 bg-yellow-600"></div>
+                    </div>
+                    
+                    <p className="text-lg text-amber-200 font-serif italic">
+                      {member.role}
+                    </p>
+
+                    {/* LinkedIn Button */}
+                    <a
+                      href={member.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 bg-amber-700/90 hover:bg-amber-600 text-white rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-yellow-600/40 mt-4"
+                    >
+                      <FaLinkedin size={20} />
+                      <span className="font-semibold text-sm">Connect</span>
+                    </a>
+                  </div>
+                </div>
+
+                {/* Card Footer with Trishul */}
+                <div className="bg-gradient-to-t from-amber-900/40 to-transparent p-3 text-center border-t border-yellow-600/20">
+                  <span className="text-2xl text-yellow-600/70">🔱</span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

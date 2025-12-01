@@ -142,13 +142,13 @@ const ProblemStatements = () => {
       <CosmicBackground />
       <Navbar />
 
-      <div className="relative z-10 px-4 max-w-5xl mx-auto" style={{ marginTop: '-800px', paddingTop: '80px' }}>
+      <div className="relative z-10 px-4 max-w-5xl mx-auto" style={{ paddingTop: '90px', paddingBottom: '3rem' }}>
         {/* Header */}
-        <header className="text-center mb-4">
+        <header className="text-center mb-4 md:mb-6">
           <motion.h1
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 via-yellow-400 to-yellow-200 mb-2 font-serif drop-shadow-[0_0_10px_rgba(234,179,8,0.5)]"
+            className="text-2xl md:text-4xl lg:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 via-yellow-400 to-yellow-200 mb-2 font-serif drop-shadow-[0_0_10px_rgba(234,179,8,0.5)]"
           >
             CODE VEDA 2.0
           </motion.h1>
