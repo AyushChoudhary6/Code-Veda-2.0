@@ -17,51 +17,51 @@ const HackathonSchedule = () => {
   const phases = [
     {
       id: 1,
-      date: "Jul 1, 2025 - Aug 20, 2025",
+      date: "29 November, 2025 - 15 February, 2026",
       title: "Registration Phase",
       organization: "Phase 1",
-      description1: "Registrations will be open till 20th August 2025",
+      description1: "Registrations will be open till 15th February 2026",
       description2: "All participants are expected to form teams of 2-4 members",
       description3: "No changes will be allowed in team structure after registration closes",
-      tags: ["2-4 Members", "Online"],
-      icon: "📝",
-      achievement: "500+ Teams Registered"
+      tags: ["2-4 Members", "Team Formation"],
+      // icon: "📝",
+      // achievement: "500+ Teams Registered"
     },
     {
       id: 2,
-      date: "Aug 2, 2025 - Aug 25, 2025",
+      date: "TBA",
       title: "PPT Submission",
       organization: "Phase 2",
-      description1: "PPT submission starts on 15th July 2025",
-      description2: "Deadline for PPT submission is 25th August 2025",
-      description3: "Project description should be added alongside the PPT",
+      // description1: "PPT submission starts on 15th July 2025",
+      // description2: "Deadline for PPT submission is 25th August 2025",
+      // description3: "Project description should be added alongside the PPT",
       tags: ["Planning", "Strategy"],
-      icon: "💡",
-      achievement: "300+ Project Ideas Submitted"
+      // icon: "💡",
+      // achievement: "300+ Project Ideas Submitted"
     },
     {
       id: 3,
-      date: "Sep 6, 2025",
+      date: "TBA",
       title: "Online Round",
       organization: "Phase 3",
-      description1: "Online round will be conducted on 6th September 2025",
-      description2: "Shortlisted teams from the PPT round will move to the online round",
-      description3: "Results of this round will be declared next day, i.e. on 7th September 2025",
+      // description1: "Online round will be conducted on 6th September 2025",
+      // description2: "Shortlisted teams from the PPT round will move to the online round",
+      // description3: "Results of this round will be declared next day, i.e. on 7th September 2025",
       tags: ["Development", "Pitching"],
-      icon: "⚡",
-      achievement: "24/7 Mentor Support Active"
+      // icon: "⚡",
+      // achievement: "24/7 Mentor Support Active"
     },
     {
       id: 4,
-      date: "Sep 13, 2025",
+      date: "TBA",
       title: "Final Offline Round",
       organization: "Phase 4",
-      description1: "Offline round will be conducted on 13th September 2025 at Microsoft, Gurugram",
-      description2: "It will be a 8 hours high energy hackathon",
-      description3: "Present your projects to judges, BEST OF LUCK :)",
+      // description1: "Offline round will be conducted on 13th September 2025 at Microsoft, Gurugram",
+      // description2: "It will be a 8 hours high energy hackathon",
+      // description3: "Present your project/s to judges, BEST OF LUCK :)",
       tags: ["Presentation", "Demo"],
-      icon: "🏆",
-      achievement: "Top 50 Teams Selected"
+      // icon: "🏆",
+      // achievement: "Top 50 Teams Selected"
     }
   ];
 
