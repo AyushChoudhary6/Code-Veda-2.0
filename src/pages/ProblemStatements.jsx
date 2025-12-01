@@ -139,7 +139,6 @@ const ProblemStatements = () => {
 
   return (
     <div className="bg-cosmic-900 text-white font-sans overflow-x-hidden">
-      <CosmicBackground />
       <Navbar />
 
       <div className="relative z-10 px-4 max-w-5xl mx-auto pt-20 md:pt-24 pb-12">

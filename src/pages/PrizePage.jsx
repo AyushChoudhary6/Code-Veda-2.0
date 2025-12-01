@@ -22,15 +22,15 @@ const PrizePage = () => {
         </div>
 
         {/* Podium Section */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 items-end mb-16 md:mb-32 relative">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-20 md:gap-8 items-end mb-16 md:mb-32 relative mt-12 md:mt-0">
           {/* 2nd Place */}
-          <div className="order-2 md:order-1 relative group">
+          <div className="order-2 md:order-1 relative group pt-20 md:pt-0">
             <div className="glass-card rounded-3xl p-6 md:p-8 text-center transform transition-all duration-500 hover:-translate-y-2 border-t-4 border-gray-400 bg-cosmic-800/50 backdrop-blur-sm border border-gray-400/20">
               <div className="absolute -top-16 md:-top-20 left-1/2 -translate-x-1/2 w-32 h-32 md:w-40 md:h-40 animate-float-delayed">
                 <img
                   src="/assets/silver_trophy.png"
                   alt="Silver Trophy"
-                  className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(192,192,192,0.5)]"
+                  className="w-full h-full object-cover rounded-full border-4 border-gray-400/40 bg-cosmic-800/80 p-3 drop-shadow-[0_0_15px_rgba(192,192,192,0.5)]"
                 />
               </div>
               <div className="mt-12 md:mt-16 space-y-2">
@@ -44,13 +44,13 @@ const PrizePage = () => {
           </div>
 
           {/* 1st Place */}
-          <div className="order-1 md:order-2 relative z-10 group">
+          <div className="order-1 md:order-2 relative z-10 group pt-24 md:pt-0">
             <div className="glass-card rounded-3xl p-8 md:p-10 text-center transform transition-all duration-500 hover:-translate-y-4 border-t-4 border-yellow-500 bg-cosmic-800/60 backdrop-blur-sm border border-yellow-500/30 shadow-[0_0_30px_rgba(255,215,0,0.1)]">
               <div className="absolute -top-20 md:-top-28 left-1/2 -translate-x-1/2 w-44 h-44 md:w-56 md:h-56 animate-float">
                 <img
                   src="/assets/gold_trophy.png"
                   alt="Gold Trophy"
-                  className="w-full h-full object-contain drop-shadow-[0_0_25px_rgba(255,215,0,0.6)]"
+                  className="w-full h-full object-cover rounded-full border-4 border-yellow-500/50 bg-cosmic-800/80 p-4 drop-shadow-[0_0_25px_rgba(255,215,0,0.6)]"
                 />
               </div>
               <div className="mt-16 md:mt-24 space-y-2 md:space-y-3">
@@ -66,13 +66,13 @@ const PrizePage = () => {
           </div>
 
           {/* 3rd Place */}
-          <div className="order-3 relative group">
+          <div className="order-3 relative group pt-20 md:pt-0">
             <div className="glass-card rounded-3xl p-6 md:p-8 text-center transform transition-all duration-500 hover:-translate-y-2 border-t-4 border-orange-400 bg-cosmic-800/50 backdrop-blur-sm border border-orange-400/20">
               <div className="absolute -top-16 md:-top-20 left-1/2 -translate-x-1/2 w-32 h-32 md:w-40 md:h-40 animate-float-delayed">
                 <img
                   src="/assets/bronze_trophy.png"
                   alt="Bronze Trophy"
-                  className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(205,127,50,0.5)]"
+                  className="w-full h-full object-cover rounded-full border-4 border-orange-400/40 bg-cosmic-800/80 p-3 drop-shadow-[0_0_15px_rgba(205,127,50,0.5)]"
                 />
               </div>
               <div className="mt-12 md:mt-16 space-y-2">
